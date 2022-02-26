@@ -1,4 +1,4 @@
 # **Finance Bot**
-#Team Members:
+**Team Members:**
 - Matthew Mandelbaum: mmandelb2201
 
