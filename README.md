@@ -1,2 +1,4 @@
-# finance-bot
-SSW345 Bot
+# **Finance Bot**
+#Team Members:
+- Matthew Mandelbaum: mmandelb2201
+
