@@ -1,12 +1,19 @@
+```
 SSW345 Design Milestone:
 Finance Bot
+```
+```
 Group 7
 Mikayla Mount
 Matthew Mandelbaum
 Dylan James
 Jack Corridon
+```
+```
 “ I pledge my honor that I have abided by the Stevens Honors System.”
-Problem Statement
+```
+# Problem Statement
+
 Finance will forever be an integral facet of our daily lives. It is a virtually important
 subject matter to be familiar with in theory and in our own personal applications. While financial
 savviness may come easy to those with experience and education, most people can afford to have
@@ -15,6 +22,7 @@ user spending and the various types of income or assets they may have. With grea
 of one’s trends and standings, the user may, and hopefully will make wiser financial decisions.
 Our lives depend on balancing finances, and everyone deserves to and should have services and
 applications dedicated to aid in such responsibility. However, besides five select states, the
+
 
 American education system has not emphasized financial literacy as a necessary requirement,
 and as a result of overlooking the subject Fortune Magazine reports that “nearly two thirds of
@@ -31,7 +39,8 @@ next pay day. Financial advisory business SmartAsset confirms that “individual
 levels of financial literacy tend to adhere to better financial practices – such as having an
 emergency fund and planning for retirement – and are also more likely to build wealth further”.
 
-Bot Description
+# Bot Description
+
 Our bot performs a variety of services for its user, the bot will have the ability to accept
 the user’s spending data. The bot can accept the users accounts receivable (income) and accounts
 payable (spending, saving, etc.), and then categorize them based on their type, for the income it
@@ -50,8 +59,12 @@ feature is to help direct our customer to potential savings like coupons, cheape
 the same product in their area, and possible website promotions for other products. Our app is
 about “Money efficiency at its finest.”
 
-Use Cases
+# Use Cases
+
+```
 ● Use Case 1 - User inputs their spending of the day:
+```
+```
 **Pre condition**
 - [S0] User must have a registered account and be logged in
 **Main flow**
@@ -66,7 +79,14 @@ both the category and purchase memo
 data
 **Alternative flow**
 - [E1] User decides to not use the purchase report feature
+```
+
+
+```
 ● Use Case 2 - User wants to look at their past data trends and visuals :
+```
+
+```
 **Pre condition**
 - [S0] User must have a registered account and be logged in
 - [S1] User must have previous data stored in their account
@@ -86,8 +106,13 @@ graphs are interacted with
 **Alternative flow**
 - [E1] No previous user data stored
 - [E2] User decides to not interact with the Trends and Graphics feature
-Design Sketches
+```
+
+# Design Sketches
+
+```
 Sequence
+```
 This sequence diagram shows the relationship betweenthe main objects for our finance
 bot. User financial information will be stored in objects. Each bank account will be stored in a
 bank account object. These objects hold information such as interest, balance, and type of
@@ -98,7 +123,10 @@ information in to create suggestions on how the user can improve their financial
 can call the bot object to get the suggestions for spending and how they have their accounts set
 up.
 
+```
 Storyboard
+```
+
 This storyboard illustrates the way the user willnavigate through the website connected
 to the bot. First, the user needs to create an account. This account will take in data such as email,
 password, and their main bank. Next, the user will be directed to the Add Financial Data Page.
@@ -110,16 +138,19 @@ monthly expenses breakdown, recent transactions, and an indicator showing how we
 sticking to their budget. The bot will give suggestions about how the user can change their
 spending habits on this page as well as other suggestions.
 
-Architecture Design
+# Architecture Design
+
+
 The architecture design that the bot development team will use was created with in
 consideration of time allotted for the project, developer experience, expected user size, and
+
 
 future planning. Important software development qualities such as feasibility and maintainability
 of the project were discussed. The team found it appropriate to utilize the layered architecture
 design shown in Figure 1 to create the platform that the bot will be embedded in. The bot is
 responsible for performing statistics and providing suggestions through business-rules. These
-responsibilities are illustrated as components in the Business Logic/Service Layer. The data
-visualization which can be in the form of charts or tables are a part of the Presentation Layer as
+responsibilities are illustrated as components in the _Business Logic/Service Layer._ The data
+visualization which can be in the form of charts or tables are a part of the _Presentation Layer_ as
 components. Information in Amazon DynamoDB database, outside the scope of our minimum
 viable product, pictures of receipts will be stored in Amazon S3 Buckets and use Amazon
 Textract to extract data in a structured manner.
@@ -153,6 +184,5 @@ responsibility into its own Lambda function following the Single Responsibility 
 
 An important business requirement for the bot must be keeping user financial information
 secure. In order to uphold the confidentiality, integrity, and availability of user data, the team will
-
 use Amazon security services such as Amazon Key Management service (data encryption
-service). Also, AWS provides data protection guidelines for each web service provided
+service). Also, AWS provides data protection guidelines for each web service provided.
