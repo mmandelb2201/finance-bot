@@ -1,16 +1,15 @@
+###### SSW345 Design Milestone:
+### Finance Bot
 
-######SSW345 Design Milestone:
-###Finance Bot
 
-
-#Group 7
+# Group 7
 1. Mikayla Mount
 2. Matthew Mandelbaum
 3. Dylan James
 4. Jack Corridon
 
 
-#“ I pledge my honor that I have abided by the Stevens Honors System.”
+# “ I pledge my honor that I have abided by the Stevens Honors System.”
 
 ## Problem Statement
 
