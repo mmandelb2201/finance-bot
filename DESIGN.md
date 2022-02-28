@@ -9,7 +9,7 @@
 4. Jack Corridon
 
 
-### “ I pledge my honor that I have abided by the Stevens Honors System.”
+###### “ I pledge my honor that I have abided by the Stevens Honors System.”
 
 ## Problem Statement
 
