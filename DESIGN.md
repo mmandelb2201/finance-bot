@@ -1,4 +1,4 @@
-###### SSW345 Design Milestone:
+# SSW345 Design Milestone:
 ### Finance Bot
 
 
@@ -9,9 +9,9 @@
 4. Jack Corridon
 
 
-# “ I pledge my honor that I have abided by the Stevens Honors System.”
+###### “ I pledge my honor that I have abided by the Stevens Honors System.”
 
-## Problem Statement
+### Problem Statement
 
 Finance will forever be an integral facet of our daily lives. It is a virtually important
 subject matter to be familiar with in theory and in our own personal applications. While financial
@@ -38,7 +38,7 @@ next pay day. Financial advisory business SmartAsset confirms that “individual
 levels of financial literacy tend to adhere to better financial practices – such as having an
 emergency fund and planning for retirement – and are also more likely to build wealth further”.
 
-## Bot Description
+### Bot Description
 
 Our bot performs a variety of services for its user, the bot will have the ability to accept
 the user’s spending data. The bot can accept the users accounts receivable (income) and accounts
@@ -58,7 +58,7 @@ feature is to help direct our customer to potential savings like coupons, cheape
 the same product in their area, and possible website promotions for other products. Our app is
 about “Money efficiency at its finest.”
 
-## Use Cases
+### Use Cases
 
 
 ● Use Case 1 - User inputs their spending of the day:
@@ -107,10 +107,10 @@ graphs are interacted with
 - [E2] User decides to not interact with the Trends and Graphics feature
 
 
-## Design Sketches
+### Design Sketches
 
 
-#Sequence
+####### Sequence
 
 This sequence diagram shows the relationship betweenthe main objects for our finance
 bot. User financial information will be stored in objects. Each bank account will be stored in a
@@ -124,7 +124,7 @@ up.
 
 Sequence Diagram : https://github.com/mmandelb2201/finance-bot/blob/main/Sequence%20Diagram%20.png
 
-#Storyboard
+####### Storyboard
 
 
 This storyboard illustrates the way the user willnavigate through the website connected
@@ -140,7 +140,7 @@ spending habits on this page as well as other suggestions.
 
 Storyboard Diagram : https://github.com/mmandelb2201/finance-bot/blob/main/Storyboard%20Diagram%20.png
 
-# Architecture Design
+####### Architecture Design
 
 
 Bot Diagram and Suggestion Service Diagram: https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Bot%20and%20Suggestion%20Diagram.png
