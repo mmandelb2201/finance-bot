@@ -148,46 +148,15 @@ spending habits on this page as well as other suggestions.
 ![Statistics Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Statistics%20Service%20Diagram.png)
 
 
+The architecture design that the bot development team will use was created with in consideration of time allotted for the project, developer experience, expected user size, and future planning. Important software development qualities such as feasibility and maintainability of the project were discussed. The team found it appropriate to utilize the layered architecture design shown in Figure 1 to create the platform that the bot will be embedded in. The bot is responsible for performing statistics and providing suggestions through business-rules. These responsibilities are illustrated as components in the *Business Logic/Service Layer.* The data visualization which can be in the form of charts or tables are a part of the *Presentation Layer* as components. User information will be stored in an Amazon DynamoDB database, a key-value NoSQL database. Outside the scope of our minimum viable product, pictures of receipts can be stored in Amazon S3 Buckets and use Amazon Textract to extract data in a structured manner.
 
-The architecture design that the bot development team will use was created with in
-consideration of time allotted for the project, developer experience, expected user size, and
-future planning. Important software development qualities such as feasibility and maintainability
-of the project were discussed. The team found it appropriate to utilize the layered architecture
-design shown in Figure 1 to create the platform that the bot will be embedded in. The bot is
-responsible for performing statistics and providing suggestions through business-rules. These
-responsibilities are illustrated as components in the _Business Logic/Service Layer._ The data
-visualization which can be in the form of charts or tables are a part of the _Presentation Layer_ as
-components. Information in Amazon DynamoDB database, outside the scope of our minimum
-viable product, pictures of receipts will be stored in Amazon S3 Buckets and use Amazon
-Textract to extract data in a structured manner.
+Software development is a time consuming endeavor, and so for the group to add as many properly-tested, and stable features as possible, we chose the layered architecture over the microservices architecture. Implementation of the project and additional learning-curve for the team will make developing separately deployed units difficult. There is no concern of scalability issues and while the team does desire to go beyond the minimum viable product, further maintenance and additional frequent features is not foreseen in the future. Thus, it is imperative to create a well-defined scope for the bot and this architecture benefits from being easily testable with high ease of development at the beginning. The team understands that this architecture may struggle with maintainability, performance, and ease of deployment. The development team believes that well-documented code and design and layered architecture's benefits will outweigh the negatives for the team’s use case.
 
-Software development is a time consuming endeavor, and so for the group to add as
-many properly-tested, and stable features as possible, we chose the layered architecture over the
-microservices architecture. Implementation of the project and additional learning-curve for the
-team will make developing separately deployed units difficult. There is no concern of scalability
-issues and while the team does desire to go beyond the minimum viable product, further
-maintenance and additional frequent features is not foreseen in the future. Thus, it is imperative
-to create a well-defined scope for the bot and this architecture benefits from being easily testable
-with high ease of development at the beginning. The team understands that this architecture may
-struggle with maintainability, performance, and ease of deployment. The development team
-believes that well-documented code and design and layered architecture's benefits will outweigh
-the negatives for the team’s use case.
+The bot front-end component will consist of a UI for input user information, but also showing suggestion and data visualizations such as a pie chart. The bot communicates to its backend and using several Amazon Web Services, the bot will automate analysis of financial information. The team will build a simple and user-friendly interface utilizing React components.
 
-The bot consists of two major services: suggestion service and statistics service. The
-suggestion service will generate suggestions based on specific rules. These rules will govern
-what type of suggestions the user will give. User information from the Amazon DynamoDB
-database will be used with the Statistics Service and Amazon OpenSearch Service to query and
-analyze data. Amazon OpenSearch Service is a web service of AWS which manages clusters
-created to index information. The intelligent search engine OpenSearch (an open-source forked
-search engine of ElasticSearch) will make searching for relevant information and data
-aggregation easier. The statistics service will use a number of libraries which can be called by
-not just the suggestion service but also be used to power data visualizers such as pie charts.
+The bot consists of two major services: suggestion service and statistics service. Figure 2 illustrates that the suggestion service will generate suggestions based on specific rules. These rules will govern what type of suggestions the user will give. User information from the Amazon DynamoDB database or third party services such as the Plaid API or Bank of America API will be used with the Statistics Service (Figure 3) and Amazon OpenSearch Service to query and analyze data. Amazon OpenSearch Service is a web service of AWS which manages clusters created to index information. The intelligent search engine OpenSearch (an open-source forked search engine of ElasticSearch) will make searching for relevant information and data aggregation easier. The statistics service will use a number of libraries which can be called by not just the suggestion service but also be used to power data visualizers such as pie charts. The statistics service will be a module for now which can be used by other services. This is done through AWS Lambda Layer which is a convenient way to package libraries and dependencies that other Lambda functions can use.
 
-The development team has decided to use Amazon Lambda, an event-driven cloud
-compute service. AWS Lambda will be used to manage specific functions of each service.
-Instead of creating a monolithic function for each service, the team has decided to split each
-responsibility into its own Lambda function following the Single Responsibility Principle.
-An important business requirement for the bot is to ensure that user financial information
-secure. In order to uphold the confidentiality, integrity, and availability of user data, the team will
-use Amazon security services such as Amazon Key Management service (data encryption
-service). Also, AWS provides data protection guidelines for each web service provided.
+The development team has decided to use Amazon Lambda, an event-driven cloud compute service. AWS Lambda will be used to manage specific functions of each service. Instead of creating a monolithic function for each service, the team has decided to split each responsibility into its own Lambda function following the Single Responsibility Principle. Each lambda function will use the NodeJs runtime environment to implement the code.
+
+An important business requirement for the bot must be keeping user financial information secure. In order to uphold the confidentiality, integrity, and availability of user data, the team will use Amazon security services such as Amazon Key Management service (data encryption service). Also, AWS provides data protection guidelines for each web service provided.
+
