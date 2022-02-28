@@ -143,9 +143,9 @@ spending habits on this page as well as other suggestions.
 ### Architecture Design
 
 
-![Bot Diagram and Suggestion Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Bot%20and%20Suggestion%20Diagram.png)
+![Bot Diagram and Suggestion Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Diagrams%20(2).png)
 
-![Statistics Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Statistics%20Service%20Diagram.png)
+![Statistics Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Statistics%20Service%20Diagram%20(1).png)
 
 
 The architecture design that the bot development team will use was created with in consideration of time allotted for the project, developer experience, expected user size, and future planning. Important software development qualities such as feasibility and maintainability of the project were discussed. The team found it appropriate to utilize the layered architecture design shown in Figure 1 to create the platform that the bot will be embedded in. The bot is responsible for performing statistics and providing suggestions through business-rules. These responsibilities are illustrated as components in the *Business Logic/Service Layer.* The data visualization which can be in the form of charts or tables are a part of the *Presentation Layer* as components. User information will be stored in an Amazon DynamoDB database, a key-value NoSQL database. Outside the scope of our minimum viable product, pictures of receipts can be stored in Amazon S3 Buckets and use Amazon Textract to extract data in a structured manner.
