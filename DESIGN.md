@@ -123,6 +123,7 @@ information in to create suggestions on how the user can improve their financial
 can call the bot object to get the suggestions for spending and how they have their accounts set
 up.
 
+Sequence Diagram : https://github.com/mmandelb2201/finance-bot/blob/main/Sequence%20Diagram%20.png
 ```
 Storyboard
 ```
@@ -138,13 +139,19 @@ monthly expenses breakdown, recent transactions, and an indicator showing how we
 sticking to their budget. The bot will give suggestions about how the user can change their
 spending habits on this page as well as other suggestions.
 
+Storyboard Diagram : https://github.com/mmandelb2201/finance-bot/blob/main/Storyboard%20Diagram%20.png
+
 # Architecture Design
+
+
+Bot Diagram and Suggestion Service Diagram: https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Bot%20and%20Suggestion%20Diagram.png
+
+Statistics Service Diagram: https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Statistics%20Service%20Diagram.png
+
 
 
 The architecture design that the bot development team will use was created with in
 consideration of time allotted for the project, developer experience, expected user size, and
-
-
 future planning. Important software development qualities such as feasibility and maintainability
 of the project were discussed. The team found it appropriate to utilize the layered architecture
 design shown in Figure 1 to create the platform that the bot will be embedded in. The bot is
@@ -181,8 +188,7 @@ The development team has decided to use Amazon Lambda, an event-driven cloud
 compute service. AWS Lambda will be used to manage specific functions of each service.
 Instead of creating a monolithic function for each service, the team has decided to split each
 responsibility into its own Lambda function following the Single Responsibility Principle.
-
-An important business requirement for the bot must be keeping user financial information
+An important business requirement for the bot is to ensure that user financial information
 secure. In order to uphold the confidentiality, integrity, and availability of user data, the team will
 use Amazon security services such as Amazon Key Management service (data encryption
 service). Also, AWS provides data protection guidelines for each web service provided.
