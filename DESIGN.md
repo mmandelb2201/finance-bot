@@ -110,7 +110,7 @@ graphs are interacted with
 ### Design Sketches
 
 
-####### Sequence
+###### Sequence
 
 This sequence diagram shows the relationship betweenthe main objects for our finance
 bot. User financial information will be stored in objects. Each bank account will be stored in a
@@ -122,9 +122,9 @@ information in to create suggestions on how the user can improve their financial
 can call the bot object to get the suggestions for spending and how they have their accounts set
 up.
 
-Sequence Diagram : https://github.com/mmandelb2201/finance-bot/blob/main/Sequence%20Diagram%20.png
+![Sequence Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Sequence%20Diagram%20.png)
 
-####### Storyboard
+###### Storyboard
 
 
 This storyboard illustrates the way the user willnavigate through the website connected
@@ -138,14 +138,14 @@ monthly expenses breakdown, recent transactions, and an indicator showing how we
 sticking to their budget. The bot will give suggestions about how the user can change their
 spending habits on this page as well as other suggestions.
 
-Storyboard Diagram : https://github.com/mmandelb2201/finance-bot/blob/main/Storyboard%20Diagram%20.png
+![Storyboard Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Storyboard%20Diagram%20.png)
 
-####### Architecture Design
+###### Architecture Design
 
 
-Bot Diagram and Suggestion Service Diagram: https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Bot%20and%20Suggestion%20Diagram.png
+![Bot Diagram and Suggestion Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Bot%20and%20Suggestion%20Diagram.png)
 
-Statistics Service Diagram: https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Statistics%20Service%20Diagram.png
+![Statistics Service Diagram](https://github.com/mmandelb2201/finance-bot/blob/main/Architecture%20Design%20-%20Statistics%20Service%20Diagram.png)
 
 
 
