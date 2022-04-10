@@ -3,11 +3,15 @@ class Transaction{
     title = "";
     description = "";
     date = new Date();
+    type = "";
 
-    constructor(amount, title, description, date){
+    constructor(amount, title, description, date, type){
         this.amount = amount;
         this.title = title;
         this.description = description;
         this.date = date;
+        this.type = type;
     }
 }
+
+export default Transaction;

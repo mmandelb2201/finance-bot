@@ -3,6 +3,15 @@ import ReoccuringTransaction from "./reoccuringTransaction";
 import BankAccount from "./bankAccount";
 
 class User {
+    /**
+     * Object that holds all user data. Also caluclates other attributes such as total monthly spending
+     * @param {String} 
+     * @param {String}
+     * @param {Number}
+     * @param {Transactions[]}
+     * @param {Accounts[]}
+     * @param {ReoccuringTransactions[]}
+     */
     name = "";
     email = "";
     income = 0;
