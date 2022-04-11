@@ -51,22 +51,27 @@ class User {
      * @returns {number} monthy cost of reoccuring transaction
      */
     calculateReoccurMonthlyTotal(reoccurTrans){
-        const sDate = reoccurTrans.startDate.getTime();
-        const date = new Date();
-        const firstDayOfMonth = this.getFirstDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
-        const lastDayOfMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
-        const periodInMillSec = reoccurTrans.period * 86400000; //need to convert period in days to milliseconds
-        var currStart = sDate;
-
-        while(currStart < firstDayOfMonth){
-            currStart += periodInMillSec;
-        }
-
-        if(currStart > lastDayOfMonth){
-            return 0;
+        //Check if period is 0. If so, the transaction happens monthly, so only return amount. 
+        if(reoccurTrans.period == 0){
+            return reoccurTrans.amount;
         }else{
-            var amtTransactions = (lastDayOfMonth - firstDayOfMonth)/periodInMillSec;
-            return reoccurTrans.amount * amtTransactions;
+            const sDate = reoccurTrans.startDate.getTime();
+            const date = new Date();
+            const firstDayOfMonth = this.getFirstDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
+            const lastDayOfMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
+            const periodInMillSec = reoccurTrans.period * 86400000; //need to convert period in days to milliseconds
+            var currStart = sDate;
+    
+            while(currStart < firstDayOfMonth){
+                currStart += periodInMillSec;
+            }
+    
+            if(currStart > lastDayOfMonth){
+                return 0;
+            }else{
+                var amtTransactions = (lastDayOfMonth - firstDayOfMonth)/periodInMillSec;
+                return reoccurTrans.amount * amtTransactions;
+            }
         }
     }
 
