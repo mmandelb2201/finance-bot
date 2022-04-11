@@ -1,17 +1,8 @@
 import Transaction from "./reoccuringTransaction";
 import ReoccuringTransaction from "./reoccuringTransaction";
 import BankAccount from "./bankAccount";
-
+ 
 class User {
-    /**
-     * Object that holds all user data. Also caluclates other attributes such as total monthly spending
-     * @param {String} 
-     * @param {String}
-     * @param {Number}
-     * @param {Transactions[]}
-     * @param {Accounts[]}
-     * @param {ReoccuringTransactions[]}
-     */
     name = "";
     email = "";
     income = 0;
@@ -19,7 +10,7 @@ class User {
     monthyReoccuringTransactions = [new ReoccuringTransaction()];
     bankAccounts = [new BankAccount()];
     totalSpending = 0;
-
+ 
     constructor(email, name, income, monthyTransactions, bankAccounts, monthyReoccuringTransactions){
         this.email = email;
         this.name = name;
@@ -29,7 +20,7 @@ class User {
         this.bankAccounts = bankAccounts;
         this.totalSpending = this.calculateMonthlyTotal();
     }
-
+ 
     /**
      * Calculates the total gain or loss the user takes in each month based on income and monthy transactions.
      * @returns {number} balance
@@ -44,14 +35,14 @@ class User {
         }
         return total;
     }
-
+ 
     /**
      * Takes a reoccuring transaction obejct and returns how much that totals over the current month
-     * @param {ReoccuringTransaction} reoccurTrans 
+     * @param {ReoccuringTransaction} reoccurTrans
      * @returns {number} monthy cost of reoccuring transaction
      */
     calculateReoccurMonthlyTotal(reoccurTrans){
-        //Check if period is 0. If so, the transaction happens monthly, so only return amount. 
+        //Check if period is 0. If so, the transaction happens monthly, so only return amount.
         if(reoccurTrans.period == 0){
             return reoccurTrans.amount;
         }else{
@@ -61,11 +52,11 @@ class User {
             const lastDayOfMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
             const periodInMillSec = reoccurTrans.period * 86400000; //need to convert period in days to milliseconds
             var currStart = sDate;
-    
+   
             while(currStart < firstDayOfMonth){
                 currStart += periodInMillSec;
             }
-    
+   
             if(currStart > lastDayOfMonth){
                 return 0;
             }else{
@@ -74,26 +65,26 @@ class User {
             }
         }
     }
-
+ 
     /**
      * Returns a date object corresponding to the first day of the month
-     * @param {year} year 
-     * @param {month} month 
+     * @param {year} year
+     * @param {month} month
      * @returns {Date} first date of month
      */
     getFirstDayOfMonth(year, month){
         return new Date(year, month, 1);
     }
-    
+   
     /**
      * Returns a date object corresponding to the last day of the month
-     * @param {year} year 
-     * @param {month} month 
+     * @param {year} year
+     * @param {month} month
      * @returns {Date} last date of month
      */
     getLastDayOfMonth(year, month){
         return new Date(year, month + 1, 0);
     }
 }
-
+ 
 export default User;
