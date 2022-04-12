@@ -10,6 +10,10 @@ class User {
     monthyReoccuringTransactions = [new ReoccuringTransaction()];
     bankAccounts = [new BankAccount()];
     totalSpending = 0;
+    dateOfBirth = new Date();
+    martialStatus = "";
+    nChildren = 0;
+    nDependentChildren = 0;
  
     constructor(email, name, income, monthyTransactions, bankAccounts, monthyReoccuringTransactions){
         this.email = email;
@@ -44,7 +48,19 @@ class User {
     calculateReoccurMonthlyTotal(reoccurTrans){
         //Check if period is 0. If so, the transaction happens monthly, so only return amount.
         if(reoccurTrans.period == 0){
-            return reoccurTrans.amount;
+            //Check date bought. If current day of month is past initial transaction day during the month. Apply transaction
+            const date = new Date();
+            if(date.getDay() >= reoccurTrans.startDate.getDay()){
+                return reoccurTrans.amount;
+            }else if((this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getDay() < reoccurTrans.getDay()) && (date == this.getLastDayOfMonth(date.getFullYear(), date.getMonth()))){
+                //Day bought on doesn't occur in current month. Apply transaction on last day of month
+                //For example If subscription is purchased on Jan 30, Feb 30 does not exist. Therefore
+                //the transaction should be accounted for on the last day of Feb.
+                return reoccurTrans.amount;
+            }else{
+                //Transaction has not been applied at current point.
+                return 0;
+            }
         }else{
             const sDate = reoccurTrans.startDate.getTime();
             const date = new Date();

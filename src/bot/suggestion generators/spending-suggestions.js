@@ -1,6 +1,4 @@
 import User from "../../objects/user";
-import ReoccuringTransaction from "../../objects/reoccuringTransaction";
-import Transaction from "../../objects/transaction";
  
 class SpendingSuggestor{
     user = new User();
