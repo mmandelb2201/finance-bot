@@ -111,6 +111,17 @@ class User {
     getLastDayOfMonth(year, month){
         return new Date(year, month + 1, 0);
     }
+
+    /**
+     * Caluclates the user's age from their date of birth
+     * @returns {number} age
+     */
+    getAge(){
+        var month_diff = Date.now() - this.dateOfBirth.getTime();
+        var age_dt = new Date(month_diff);
+        var year = age_dt.getUTCFullYear();
+        return Math.abs(year - 1970);
+    }
 }
  
 export default User;
