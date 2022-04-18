@@ -1,6 +1,7 @@
 import Transaction from "./reoccuringTransaction";
 import ReoccuringTransaction from "./reoccuringTransaction";
 import BankAccount from "./bankAccount";
+import RetirementBankAccount from "./retirementBankAccount";
  
 class User {
     name = "";
@@ -9,20 +10,23 @@ class User {
     monthyTransactions = [new Transaction()];
     monthyReoccuringTransactions = [new ReoccuringTransaction()];
     bankAccounts = [new BankAccount()];
+    retirementBankAccounts = [new RetirementBankAccount()];
     totalSpending = 0;
     dateOfBirth = new Date();
     martialStatus = "";
     nChildren = 0;
     nDependentChildren = 0;
+    retirementAge = 0;
 
-    // ERROR MAX-PARAMS - MAX IS 3
-    constructor(email, name, income, monthyTransactions, bankAccounts, monthyReoccuringTransactions){
+    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge){
         this.email = email;
         this.name = name;
         this.income = income;
         this.monthyTransactions = monthyTransactions;
+        this.retirementBankAccounts = retirementBankAccounts;
         this.monthyReoccuringTransactions = monthyReoccuringTransactions;
         this.bankAccounts = bankAccounts;
+        this.retirementAge = retirementAge;
         this.totalSpending = this.calculateMonthlyTotal();
     }
  
