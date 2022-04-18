@@ -14,7 +14,8 @@ class User {
     martialStatus = "";
     nChildren = 0;
     nDependentChildren = 0;
- 
+
+    // ERROR MAX-PARAMS - MAX IS 3
     constructor(email, name, income, monthyTransactions, bankAccounts, monthyReoccuringTransactions){
         this.email = email;
         this.name = name;
@@ -29,8 +30,10 @@ class User {
      * Calculates the total gain or loss the user takes in each month based on income and monthy transactions.
      * @returns {number} balance
      */
-    claculateMonthlyTotal(){
+
+    calculateMonthlyTotal(){
         var total = this.income;
+
         for (let transaction in this.monthyTransactions){
             total = total - transaction.amount;
         }
@@ -45,19 +48,26 @@ class User {
      * @param {ReoccuringTransaction} reoccurTrans
      * @returns {number} monthy cost of reoccuring transaction
      */
+
     calculateReoccurMonthlyTotal(reoccurTrans){
         //Check if period is 0. If so, the transaction happens monthly, so only return amount.
-        if(reoccurTrans.period == 0){
+        if(reoccurTrans.period === 0){
+
             //Check date bought. If current day of month is past initial transaction day during the month. Apply transaction
             const date = new Date();
+
             if(date.getDay() >= reoccurTrans.startDate.getDay()){
                 return reoccurTrans.amount;
-            }else if((this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getDay() < reoccurTrans.getDay()) && (date == this.getLastDayOfMonth(date.getFullYear(), date.getMonth()))){
+            }
+
+            else if((this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getDay() < reoccurTrans.getDay()) && (date == this.getLastDayOfMonth(date.getFullYear(), date.getMonth()))){
                 //Day bought on doesn't occur in current month. Apply transaction on last day of month
                 //For example If subscription is purchased on Jan 30, Feb 30 does not exist. Therefore
                 //the transaction should be accounted for on the last day of Feb.
                 return reoccurTrans.amount;
-            }else{
+            }
+
+            else{
                 //Transaction has not been applied at current point.
                 return 0;
             }
