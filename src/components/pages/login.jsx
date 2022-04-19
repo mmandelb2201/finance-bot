@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./bot.css";
-import { signIn } from "../../../backend/client/auth";
 
 function SignIn() {
   // create hooks to change form inputs
@@ -15,26 +14,6 @@ function SignIn() {
       return "";
     } else {
       return "Please fill in all fields";
-    }
-  };
-
-  const signInUser = async () => {
-    // check if user inputs meet the minimum requirements
-    let validate = validateFields(email, password);
-    if (validate === "") {
-      signIn(email, password)
-        .then((res) => {
-          // Account logged in successfully
-          window.location.href = "/";
-        })
-        .catch((error) => {
-          // Error with account creation, display error
-          console.log(error);
-          setError(error);
-          alert(error);
-        });
-    } else {
-      setError(validate);
     }
   };
 
@@ -60,7 +39,6 @@ function SignIn() {
         className="submit-button"
         type="button"
         value="Submit"
-        onClick={() => signInUser()}
       />{" "}
       <h3 id="error-label"> {error} </h3>{" "}
       <a href="/sign-up" className="switch-page">

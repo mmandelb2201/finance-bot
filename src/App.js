@@ -2,11 +2,11 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./components/pages/Home";
-import SignUp from "./components/pages/SignUp";
-import InputData from "./components/pages/InputData";
-import Settings from "./components/pages/Settings";
-import ViewAccount from "./components/pages/ViewAccount";
+import Home from "./components/pages/home";
+import SignUp from "./components/pages/signUp";
+import InputData from "./components/pages/inputData";
+import Settings from "./components/pages/settings";
+import ViewAccount from "./components/pages/viewAccount";
 
 function App() {
   return (
