@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Home = () => {
-  return <div>"fuck me right ?"</div>;
+  return <div>"Homie"</div>;
 };
 
 export default Home;
