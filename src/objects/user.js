@@ -126,6 +126,52 @@ class User {
         var year = age_dt.getUTCFullYear();
         return Math.abs(year - 1970);
     }
+
+    //takes in current user stats and returns their IRA contribution
+    getMaxIRACont(){
+        total = 0;
+        //limit yearly income for max Roth IRA contribution is 204,000 per year
+        if(this.income * 12 < 204000){
+            if(this.getAge() >= 50){
+                total = 7000;
+            }else{
+                total = 6000;
+            }
+        //if person makes between $204,000 and $214,000 they can contribute a reduced amount
+        }else if(this.income * 12 < 214000){
+            total = this.income * 12 - 125000;
+            total = total/15;
+            if(this.getAge() >= 50){
+                total = total * 7000;
+                total = 7000 - total;
+            }else{
+                total = total * 6000;
+            total = 6000 - total;
+            }
+        }
+        return total;
+    }
+    /**
+     * Check if user has a type of a bank of account currently open.
+     * @param {String} type 
+     * @returns {Boolean}
+     */
+    hasAccount(type){
+        if(type === "401K" || type === "Roth IRA" || type === "Traditional IRA"){
+            for(let account in this.retirementBankAccounts){
+                if(account.type === type){
+                    return true;
+                }
+            }
+        }else{
+            for(let account in this.bankAccounts){
+                if(account.type === type){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
  
 export default User;

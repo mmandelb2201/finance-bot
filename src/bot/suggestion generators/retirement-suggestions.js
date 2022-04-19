@@ -19,12 +19,49 @@ class RetirementSuggestor{
         var realRetirementTotal = this.caluclateFutueValue(retirementTotal, 0.025, year_diff);
         //total amount the user will have in their account by the time they retire
         var savingsByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
+        //Find how much the user will have if they continue saving as they are
+        var sWithAWByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
         //check if user currently has enough saved to be retired safely
         if(savingsByRetirement[1] > realRetirementTotal){
             suggestions.push("Great job saving! Even without putting another dollar into your retirement accounts, you have enough saved to be retired for 25 years. But that does not mean you should stop saving!");
         }
-        //Find how much the user will have if they continue saving as they are
-        var sWithAWByRetirement = 0;
+        if(sWithAWByRetirement[1] > realRetirementTotal){
+            suggestions.push("Great Job! If you keep saving as you are, you will have enough money to safely be retired for 25 years!");
+        }else{
+            //user is not saving enough. compare their current IRA contribution to the max contribution
+            if(sWithAWByRetirement[1] < realRetirementTotal * 0.5){
+                suggestions.push("With your current saving habits, you will most likely only have enough money to be safely retired for 12 years. Saving for reirement should be your top priority.");
+            }
+            //if user makes more than the max amount to contribute to an IRA, no reason in suggesting an IRA
+            if(this.user.income * 12 < 214000){
+                let limit = this.user.getMaxIRACont();
+                //calculate how much the user needs to be saving per month if they want to retire safely
+                //to simplify calculations, take average interest between Roth and traditional IRA
+                var avgInterest = 0;
+                var count = 0;
+                for(let account in this.user.retirementBankAccounts){
+                    if(account.type == "Roth IRA" || account.type == "Traditional IRA"){
+                        avgInterest += account.interest;
+                        count += 1;
+                    }
+                }
+                avgInterest = avgInterest/count;   
+                let annualDeposit = this.calculateAnnualRequiredSavings(year_diff, savingsByRetirement[0], avgInterest);
+                //check if user cannot save enough even with max contributions to both IRA's
+                if(annualDeposit > (this.user.getMaxIRACont() * 2)){
+
+                }else if(annualDeposit > (this.user.getMaxIRACont())){
+                    //To save enough, the user needs to open a second IRA
+                    if(this.user.hasAccount("Roth IRA") && !this.user.hasAccount("Traditional IRA")){
+                        let saving = annualDeposit - this.user.getMaxIRACont();
+                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Traditional IRA as well. Max out your Roth IRA and save at least ${saving} per year in the Traditional IRA`);
+                    }else{
+                        let saving = annualDeposit - this.user.getMaxIRACont();
+                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Roth IRA as well. Max out your Traditional IRA and save at least ${saving} per year in the Roth IRA`);
+                    }
+                }
+            }
+        }
         
     }
     /**
@@ -55,13 +92,29 @@ class RetirementSuggestor{
         year_diff = retirement_age - this.user.getAge();
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
-        //run through the user's accounts and save the one's that are retirement accounts 
         for(let account in this.user.retirementBankAccounts){
             futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.caluclateFutueValue(account.balance, account.interest, year_diff);
         }
         //future account balance of retirement accounts including the effect of inflation
         var futureRealTotalRetirementAccountBalances = this.calculateRealFutureValue(futureTotalRetirementAccountBalances, year_diff);
         return [futureTotalRetirementAccountBalances, futureRealTotalRetirementAccountBalances];
+    }
+    
+    /**
+     * Calculates how much the user needs to save per month to be able to retire safely
+     * @param {number} periods years until user retires
+     * @param {number} currVal current saved balance
+     * @param {number} interest interest the account provides
+     * @returns {number} annual deposit to IRA accounts required
+     */
+    calculateAnnualRequiredSavings(periods, currVal, interest){
+        let total = this.user.income * 12 * 25;
+        let diff = total - currVal;
+        if(diff > 0){
+            return 0;
+        }else{
+            return annualPayments = diff*((interest*(1+interest)**periods)/(1+interest)**periods - 1);
+        }
     }
     /**
      * Calcualtes the value of an account after periods amount of periods
