@@ -1,6 +1,9 @@
 import "./App.css";
 import React from "react";
+import { Header } from "./components/common";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./components/pages/home";
 import SignUp from "./components/pages/signUp";
@@ -11,6 +14,7 @@ import ViewAccount from "./components/pages/viewAccount";
 function App() {
   return (
     <div className="App">
+      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
