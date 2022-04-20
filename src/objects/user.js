@@ -127,7 +127,22 @@ class User {
         return Math.abs(year - 1970);
     }
 
-    //takes in current user stats and returns their IRA contribution
+    /**
+     * Returns the max annual 401K contribution for the user
+     * @returns {number} 
+     */
+    getMax401KCont(){
+        if(this.getAge() >= 50){
+            return 27000;
+        }else{
+            return 20500;
+        }
+    }
+
+    /**
+     * Returns the max annual IRA contribution for the user
+     * @returns 
+     */
     getMaxIRACont(){
         total = 0;
         //limit yearly income for max Roth IRA contribution is 204,000 per year

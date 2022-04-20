@@ -80,14 +80,31 @@ class RetirementSuggestor{
                     }
                 }else{
                     if(hasRoth || hasTrad){
-                        suggestions.push(`To be able to retire safely, put in ${formatter.format(saving)} per year to your IRA account`);
+                        suggestions.push(`To be able to retire safely, put in ${formatter.format(annualDeposit)} per year to your IRA account`);
                     }else{
-                        suggestions.push(`To be able to retire safely, open up a Traditional or Roth IRA and save ${formatter.format(saving)} per year in that account.`)
+                        suggestions.push(`To be able to retire safely, open up a Traditional or Roth IRA and save ${formatter.format(annualDeposit)} per year in that account.`)
+                    }
+                }
+            }else{
+                //user makes too much to save into an IRA account
+                let has401K = this.user.hasAccount("401K");
+                let maxCont = this.user.getMax401KCont();
+                let annualDeposit = this.calculateAnnualRequiredSavings(year_diff, savingsByRetirement[0], avgInterest);
+                if(annualDeposit > maxCont){
+                    let amtAccounts = Math.ceil(annualDeposit/maxCont);
+                    let excess = annualDeposit % maxCont;
+                    suggestions.push(`To be able to retire safely, you should have ${amtAccounts} 401K accounts. Max out ${amtAccounts - 1} of them and save ${excess} in the last one.`);
+                }else{
+                    if(has401K){
+                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into your 401K`);
+                    }else{
+                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into a 401K`);
+
                     }
                 }
             }
         }
-        
+        return suggestions;
     }
     /**
      * Calculates how much the user will have in their account by the time they retire if they do not change their saving habit
