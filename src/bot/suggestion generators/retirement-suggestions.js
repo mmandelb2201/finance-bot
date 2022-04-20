@@ -8,16 +8,14 @@ class RetirementSuggestor{
         this.user = user;
     }
 
-    
-
     getSuggestions(){
         //changes number to current format
         var formatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'usd'
-        })
+        });
         //Array that contains suggestions
-        var suggestions = []
+        var suggestions = [];
         //amount of years until the user reaches retirement age
         year_diff = this.user.retirementAge - this.user.getAge();
         //amount the user should have saved by retirement going by the rule of 25. Not including inflation.
