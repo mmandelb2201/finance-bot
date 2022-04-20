@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Chart from "../../dist/donut";
-
 import "./pages.css";
 
 const Home = () => {
@@ -12,7 +11,7 @@ const Home = () => {
           Account Balances{" "}
         </div>{" "}
         <div className="column" id="preview-container-center">
-          DATA VIS <Chart />
+          DATA VIS
         </div>{" "}
         <div className="column" id="preview-container-end">
           <br />
