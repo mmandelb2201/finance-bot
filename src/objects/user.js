@@ -15,10 +15,10 @@ class User {
     dateOfBirth = new Date();
     martialStatus = "";
     nChildren = 0;
-    nDependentChildren = 0;
+    nChildrenCollege = 0;
     retirementAge = 0;
 
-    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge){
+    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge, nChildren, nChildrenCollege){
         this.email = email;
         this.name = name;
         this.income = income;
@@ -27,6 +27,8 @@ class User {
         this.monthyReoccuringTransactions = monthyReoccuringTransactions;
         this.bankAccounts = bankAccounts;
         this.retirementAge = retirementAge;
+        this.nChildren = nChildren;
+        this.nChildrenCollege = nChildrenCollege;
         this.totalSpending = this.calculateMonthlyTotal();
     }
  
