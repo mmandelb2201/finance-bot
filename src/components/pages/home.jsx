@@ -1,7 +1,31 @@
 import React, { useState } from "react";
 
+import "./pages.css";
+
 const Home = () => {
-  return <div>"Homie"</div>;
+  return (
+    <div className="background">
+      <div className="row">
+        <div className="column" id="preview-container-end">
+          <br />
+          Account Balances
+        </div>
+        <div className="column" id="preview-container-center">
+          DATA VIS
+        </div>
+        <div className="column" id="preview-container-end">
+          <br />
+          Suggestion
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+  );
 };
 
 export default Home;
