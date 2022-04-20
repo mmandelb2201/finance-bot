@@ -32,6 +32,7 @@ function Header() {
                 See Account Details
               </Dropdown.Item>
               <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+              <Dropdown.Item>Sign Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </section>{" "}

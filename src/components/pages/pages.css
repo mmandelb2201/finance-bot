@@ -1,7 +1,7 @@
 /* HOME */
 
 .background {
-    background-color: #e5e5e5;
+    background-color: white;
 }
 
 button {
@@ -22,7 +22,7 @@ button {
     height: 15vh;
     width: 40vh;
     font-size: 2vh;
-    background-color: lightgrey;
+    background-color: #e5e5e5;
     margin-top: 15vh;
     border-color: lightgrey;
     display: table-cell;
@@ -36,7 +36,7 @@ button {
     height: 15vh;
     width: 20vh;
     font-size: 2vh;
-    background-color: lightgrey;
+    background-color: #e5e5e5;
     margin-top: 15vh;
     border-color: lightgrey;
     display: table-cell;
