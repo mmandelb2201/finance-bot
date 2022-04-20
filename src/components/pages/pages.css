@@ -65,3 +65,51 @@ button {
     display: table-cell;
     /*Optional*/
 }
+
+
+/* LOGIN  */
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-container * {
+    margin-top: 2vh;
+}
+
+.submit-button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border-radius: 1vh;
+    padding: 1vh;
+    background-color: lightgrey;
+    font-weight: bold;
+    font-size: 1.5vh;
+}
+
+.text-input {
+    border-radius: 1vh;
+    width: 80%;
+    padding-top: 0.7vh;
+    padding-bottom: 0.7vh;
+    padding-left: auto;
+    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5vh;
+}
+
+.switch-page {
+    text-decoration: none;
+}
+
+.switch-page:hover {
+    background-color: transparent;
+    text-decoration: underline;
+}
