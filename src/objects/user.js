@@ -1,6 +1,7 @@
 import Transaction from "./reoccuringTransaction";
 import ReoccuringTransaction from "./reoccuringTransaction";
 import BankAccount from "./bankAccount";
+import RetirementBankAccount from "./retirementBankAccount";
  
 class User {
     name = "";
@@ -9,20 +10,23 @@ class User {
     monthyTransactions = [new Transaction()];
     monthyReoccuringTransactions = [new ReoccuringTransaction()];
     bankAccounts = [new BankAccount()];
+    retirementBankAccounts = [new RetirementBankAccount()];
     totalSpending = 0;
     dateOfBirth = new Date();
     martialStatus = "";
     nChildren = 0;
     nDependentChildren = 0;
+    retirementAge = 0;
 
-    // ERROR MAX-PARAMS - MAX IS 3
-    constructor(email, name, income, monthyTransactions, bankAccounts, monthyReoccuringTransactions){
+    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge){
         this.email = email;
         this.name = name;
         this.income = income;
         this.monthyTransactions = monthyTransactions;
+        this.retirementBankAccounts = retirementBankAccounts;
         this.monthyReoccuringTransactions = monthyReoccuringTransactions;
         this.bankAccounts = bankAccounts;
+        this.retirementAge = retirementAge;
         this.totalSpending = this.calculateMonthlyTotal();
     }
  
@@ -110,6 +114,63 @@ class User {
      */
     getLastDayOfMonth(year, month){
         return new Date(year, month + 1, 0);
+    }
+
+    /**
+     * Caluclates the user's age from their date of birth
+     * @returns {number} age
+     */
+    getAge(){
+        var month_diff = Date.now() - this.dateOfBirth.getTime();
+        var age_dt = new Date(month_diff);
+        var year = age_dt.getUTCFullYear();
+        return Math.abs(year - 1970);
+    }
+
+    //takes in current user stats and returns their IRA contribution
+    getMaxIRACont(){
+        total = 0;
+        //limit yearly income for max Roth IRA contribution is 204,000 per year
+        if(this.income * 12 < 204000){
+            if(this.getAge() >= 50){
+                total = 7000;
+            }else{
+                total = 6000;
+            }
+        //if person makes between $204,000 and $214,000 they can contribute a reduced amount
+        }else if(this.income * 12 < 214000){
+            total = this.income * 12 - 125000;
+            total = total/15;
+            if(this.getAge() >= 50){
+                total = total * 7000;
+                total = 7000 - total;
+            }else{
+                total = total * 6000;
+            total = 6000 - total;
+            }
+        }
+        return total;
+    }
+    /**
+     * Check if user has a type of a bank of account currently open.
+     * @param {String} type 
+     * @returns {Boolean}
+     */
+    hasAccount(type){
+        if(type === "401K" || type === "Roth IRA" || type === "Traditional IRA"){
+            for(let account in this.retirementBankAccounts){
+                if(account.type === type){
+                    return true;
+                }
+            }
+        }else{
+            for(let account in this.bankAccounts){
+                if(account.type === type){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
  
