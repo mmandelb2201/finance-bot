@@ -35,14 +35,21 @@ class AccountsSuggestor{
         //if the user has young kids, check to make sure they're saving in a 529 account
         if(hasKids && !this.user.hasAccount("529")){
             suggestions.push("Having a 529 can be  a great way to save for your kid's college. Even $100 per month can turn into over $37,000 by the time your kid turns 18");
+        }else{
+            suggestions.push("Corporate bonds can provide a high short term yield. However, keep in mind that they are subject to market, credit, and default risk.");
         }
         //Analyze medium term saving
         if(!this.user.hasAccount("CD") && !this.user.hasAccount("High Yield Savings")){
             suggestions.push("CD's and High yield savings accounts are great ways to have medium-term savings. CD's can offer up to 1.6% APY!");
+        }else{
+            suggestions.push("Index funds or ETFs are higher risk, but can provide a high potential return.");
         }
+
         //Analyze short term saving
         if(!this.user.hasAccount("High Yield Savings") && !this.user.hasAccount("Money Market")){
             suggestions.push("High yield savings accounts and money market accounts are great ways to have some short-term savings. Both types typically offer better interest rates than savings accounts.");
+        }else{
+            suggestions.push("Bonds are great ways to have high risk, low yield savings.");
         }
         return suggestions;
     }
