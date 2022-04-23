@@ -25,13 +25,10 @@ function Header() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="/input-data">
-                Input Financial Data
-              </Dropdown.Item>
-              <Dropdown.Item href="/view-account">
-                See Account Details
-              </Dropdown.Item>
+              <Dropdown.Item href="/input-data">Input Financial Data</Dropdown.Item>
+              <Dropdown.Item href="/view-account">See Account Details</Dropdown.Item>
               <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+              <Dropdown.Item href="/sign-up">Login</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </section>{" "}
