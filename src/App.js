@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./components/pages/home";
-import SignUp from "./components/pages/signUp";
+import SignUp from "./components/pages/Auth/SignUp";
 import InputData from "./components/pages/inputData";
 import Settings from "./components/pages/settings";
 import ViewAccount from "./components/pages/viewAccount";
@@ -32,4 +32,3 @@ function App() {
 }
 
 export default App;
-
