@@ -4,11 +4,17 @@ import "./pages.css";
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 function Home() {
   
   return <div></div>
   
 }
+=======
+const Home = () => {
+  return <div>"Homie"</div>;
+};
+>>>>>>> parent of 47f6d7a (new suggestions)
 =======
 const Home = () => {
   return <div>"Homie"</div>;
