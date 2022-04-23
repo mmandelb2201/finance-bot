@@ -11,6 +11,7 @@ import SignUp from "./components/pages/Auth/SignUp";
 import InputData from "./components/pages/inputData";
 import Settings from "./components/pages/settings";
 import ViewAccount from "./components/pages/viewAccount";
+<<<<<<< HEAD
 import { FirebaseAuthProvider } from './contexts';
 =======
 import SignUp from "./components/pages/signUp";
@@ -19,6 +20,9 @@ import InputData from "./components/pages/inputData";
 import Settings from "./components/pages/settings";
 import ViewAccount from "./components/pages/viewAccount";
 >>>>>>> parent of 1436484 (fixing merge conflicts)
+=======
+import { FirebaseAuthProvider } from "./contexts";
+>>>>>>> 269604165286a3cae056c015b3e59e3f65e36123
 
 function App() {
   return (

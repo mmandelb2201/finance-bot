@@ -1,5 +1,33 @@
 import React, { useState } from "react";
+import Chart from "../../dist/donut";
+import "./pages.css";
 
+<<<<<<< HEAD
+const Home = () => {
+  return (
+    <div className="background">
+      <div className="row">
+        <div className="column" id="preview-container-end">
+          <br />
+          Account Balances{" "}
+        </div>{" "}
+        <div className="column" id="preview-container-center">
+          DATA VIS
+        </div>{" "}
+        <div className="column" id="preview-container-end">
+          <br />
+          Suggestion{" "}
+        </div>{" "}
+      </div>{" "}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+  );
+=======
 function Home() {
 <<<<<<< HEAD
 
@@ -20,6 +48,7 @@ function Home() {
   </>;
   };
   
+>>>>>>> 572088574c0b8ce60984aec2e46527ef3e4cf91c
 };
 
 =======

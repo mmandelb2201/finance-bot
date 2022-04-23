@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import ReactFC from "react-fusioncharts";
+<<<<<<< HEAD
 //import ReactDOM from "react-dom";
+=======
+import ReactDOM from "react-dom";
+>>>>>>> 269604165286a3cae056c015b3e59e3f65e36123
 
 import FusionCharts from "fusioncharts/core";
 import Doughnut2D from "fusioncharts/viz/doughnut2d";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 //Adding the chart as dependency to the core fusioncharts
+<<<<<<< HEAD
 ReactFC.fcRoot(FusionCharts, Doughnut2D, FusionTheme);
+=======
+>>>>>>> 269604165286a3cae056c015b3e59e3f65e36123
 
 const chartConfigs = {
   type: "doughnut2d",
@@ -70,6 +77,10 @@ class Chart extends Component {
   }
 }
 
+<<<<<<< HEAD
 //ReactDOM.render(<Chart />, document.getElementById("root"));
+=======
+ReactDOM.render(<Chart />, document.getElementById("root"));
+>>>>>>> 269604165286a3cae056c015b3e59e3f65e36123
 
 export default Chart;
