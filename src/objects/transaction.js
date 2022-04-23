@@ -11,3 +11,5 @@ class Transaction{
         this.date = date;
     }
 }
+
+export default Transaction;
