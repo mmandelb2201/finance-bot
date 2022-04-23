@@ -3,6 +3,7 @@ import Chart from "../../dist/donut";
 import "./pages.css";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Home = () => {
   return (
     <div className="background">
@@ -55,4 +56,10 @@ function Home() {
   return <h1>Homo SAPIENS</h1>
 }
 >>>>>>> 59c61be51a168d0da006697da5447692914abaa1
+=======
+const Home = () => {
+  return <div>"Homie"</div>;
+};
+
+>>>>>>> parent of 47f6d7a (new suggestions)
 export default Home;

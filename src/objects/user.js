@@ -11,7 +11,6 @@ class User {
     name = "";
     email = "";
     income = 0;
-    debtPayback = 0;
     monthyTransactions = [new Transaction()];
     monthyReoccuringTransactions = [new ReoccuringTransaction()];
     bankAccounts = [new BankAccount()];
@@ -22,11 +21,10 @@ class User {
     nChildrenCollege = 0;
     retirementAge = 0;
 
-    constructor(email, name, income, debtPayback,monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge, nChildren, nChildrenCollege){
+    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge, nChildren, nChildrenCollege){
         this.email = email;
         this.name = name;
         this.income = income;
-        this.debtPayback = debtPayback;
         this.monthyTransactions = monthyTransactions;
         this.retirementBankAccounts = retirementBankAccounts;
         this.monthyReoccuringTransactions = monthyReoccuringTransactions;
