@@ -2,6 +2,10 @@ import Transaction from "./reoccuringTransaction";
 import ReoccuringTransaction from "./reoccuringTransaction";
 import BankAccount from "./bankAccount";
 import RetirementBankAccount from "./retirementBankAccount";
+import AccountsSuggestor from "../bot/suggestion generators/accounts-suggestions";
+import RetirementSuggestor from "../bot/suggestion generators/retirement-suggestions";
+import SpendingSuggestor from "../bot/suggestion generators/spending-suggestions";
+import SpendingSuggestor from "../bot/suggestion generators/spending-suggestions";
  
 class User {
     name = "";
@@ -188,6 +192,32 @@ class User {
             }
         }
         return false;
+    }
+    /**
+     * Gets suggestions the user can make for their account setup
+     * @returns {[String]} suggestions
+     */
+    getAccountSuggestions(){
+        let accountSuggestor = new AccountsSuggestor(this);
+        return accountSuggestor.getSuggestions()
+    }
+
+    /**
+     * Gets suggestions the user can make to imporve their retirement savings
+     * @returns {[String]} suggestions
+     */
+    getRetirementSuggestions(){
+        let retirementSuggestor = new RetirementSuggestor(this);
+        return retirementSuggestor.getSuggestions();
+    }
+    
+    /**
+     * Gets suggestions the user can make to imporve their retirement savings
+     * @returns {[String]} suggestions
+     */
+    getSpendingSuggestions(){
+        let spendingSuggestor = new SpendingSuggestor(this);
+        return spendingSuggestor.getSuggestions();
     }
 }
  
