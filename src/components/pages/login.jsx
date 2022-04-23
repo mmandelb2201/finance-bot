@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./pages.css";
 
-const SignIn = () => {
+const Login = () => {
   return (
     <div className="login-container">
       <h1 id="title">Login</h1>
@@ -34,4 +34,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Login;
