@@ -145,7 +145,7 @@ class User {
      * @returns 
      */
     getMaxIRACont(){
-        total = 0;
+        let total = 0;
         //limit yearly income for max Roth IRA contribution is 204,000 per year
         if(this.income * 12 < 204000){
             if(this.getAge() >= 50){

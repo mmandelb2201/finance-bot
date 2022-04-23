@@ -1,7 +1,9 @@
-import { Timestamp } from "firebase/firestore";
+import { Timestamp, doc, getDoc } from "firebase/firestore";
 import BankAccount from "../../objects/bankAccount";
 import User from "../../objects/user";
-import { auth } from "./config";
+import { Transaction } from "firebase/firestore";
+import { auth, db } from "./config";
+import { onAuthStateChanged } from "firebase/auth"
 
 const userConverter = {
     toFirestore: (user) => {
@@ -69,9 +71,30 @@ const userConverter = {
             data.monthyReoccuringTransactions.map(t => convertToTransaction(t)),
             data.retirementAge,
             data.nChildren,
-            nChildrenCollege
+            data.nChildrenCollege
         )
     }
-}
+};
 
-export { userConverter };
+const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, async (user) => {
+            if(user){
+                //TODO: Get user data from firestore and create user object
+                const userRef = doc(db, "users", user.uid).withConverter(userConverter);
+                const docSnap = await getDoc(userRef);
+                if (docSnap.exists) {
+                    let user = docSnap.data();
+                    resolve(user);
+                } else {
+                    reject(new Error('User does not exist!'));
+                }
+                
+            } else {
+                resolve(null);
+            }
+        })
+    });
+};
+
+export { userConverter, getCurrentUser };
