@@ -13,7 +13,6 @@ class User {
     retirementBankAccounts = [new RetirementBankAccount()];
     totalSpending = 0;
     dateOfBirth = new Date();
-    martialStatus = "";
     nChildren = 0;
     nChildrenCollege = 0;
     retirementAge = 0;
