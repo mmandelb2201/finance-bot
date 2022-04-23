@@ -6,4 +6,11 @@ const Home = () => {
   return <div>"Homie"</div>;
 };
 
+<<<<<<< HEAD
+=======
+const Home = () => {
+  return <div>"Homie"</div>;
+};
+
+>>>>>>> parent of 47f6d7a (new suggestions)
 export default Home;
