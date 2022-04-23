@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const Home = () => {
-  return <div>"Homie"</div>;
-};
-
+function Home() {
+  return <h1>Homo SAPIENS</h1>
+}
 export default Home;
