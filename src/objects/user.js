@@ -11,21 +11,22 @@ class User {
     name = "";
     email = "";
     income = 0;
+    debtPayback = 0;
     monthyTransactions = [new Transaction()];
     monthyReoccuringTransactions = [new ReoccuringTransaction()];
     bankAccounts = [new BankAccount()];
     retirementBankAccounts = [new RetirementBankAccount()];
     totalSpending = 0;
     dateOfBirth = new Date();
-    martialStatus = "";
     nChildren = 0;
     nChildrenCollege = 0;
     retirementAge = 0;
 
-    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge, nChildren, nChildrenCollege){
+    constructor(email, name, income, debtPayback,monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge, nChildren, nChildrenCollege){
         this.email = email;
         this.name = name;
         this.income = income;
+        this.debtPayback = debtPayback;
         this.monthyTransactions = monthyTransactions;
         this.retirementBankAccounts = retirementBankAccounts;
         this.monthyReoccuringTransactions = monthyReoccuringTransactions;
@@ -150,7 +151,7 @@ class User {
      * @returns 
      */
     getMaxIRACont(){
-        total = 0;
+        let total = 0;
         //limit yearly income for max Roth IRA contribution is 204,000 per year
         if(this.income * 12 < 204000){
             if(this.getAge() >= 50){

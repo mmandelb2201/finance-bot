@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function Home() {
+<<<<<<< HEAD
 
   const ManyInputs = ({howMany}) => {
     // Like ["", "", ""]
@@ -21,4 +22,8 @@ function Home() {
   
 };
 
+=======
+  return <h1>Homo SAPIENS</h1>
+}
+>>>>>>> 59c61be51a168d0da006697da5447692914abaa1
 export default Home;
