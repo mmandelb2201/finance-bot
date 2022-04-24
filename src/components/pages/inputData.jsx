@@ -173,7 +173,12 @@ function InputData() {
             ></input>
           </div>
         </div>
+
+        <div class="row" id="submit-button">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon1">Submit</button>
+        </div>
       </form>
+      <br></br>
     </div>
   );
 }
