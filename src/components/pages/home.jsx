@@ -6,14 +6,10 @@ import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
 import Transaction from "../../objects/transaction";
 import User from "../../objects/user";
-<<<<<<< HEAD
 import SuggestionsBox from "../common/suggestions/suggestions"
 import AccountsSuggestor from "../../bot/suggestion generators/accounts-suggestions";
 import SpendingSuggestor from "../../bot/suggestion generators/spending-suggestions";
 import RetirementSuggestor from "../../bot/suggestion generators/retirement-suggestions";
-=======
-import SuggestionsBox from "../common/suggestions/suggestions";
->>>>>>> 80b8cf3bdfd7fd7e32ca7dbe8528b30101f0c232
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -33,7 +29,12 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 const Home = () => {
 
   let u = new User("f", "", 1000,[new Transaction(100, "Rent", "Rent", new Date())], [new BankAccount(100, 0.3, [new Transaction(100, "Groceries", "Groceries", new Date())], "Checking")], [new RetirementBankAccount(100, 0.2, [new Transaction(100, "Groceries", "Groceries", new Date())], "401K", 50, 50)],  [], 60, 2, 3, new Date());
-  console.log(u.totalSpending);
+  let spendingSugs = u.getSpendingSuggestions();
+  let accountSugs = u.getAccountSuggestions();
+  let retireSugs = u.getRetirementSuggestions();
+  var totalSugs = [];
+  console.log(totalSugs);
+  totalSugs.concat(spendingSugs, accountSugs, retireSugs);
   // Preparing the chart data
 const chartData = [
   {
@@ -79,7 +80,7 @@ const chartConfigs = {
         </div>{" "}
         <div className="col" id="preview-container-end">
           Suggestion{" "}
-            <SuggestionsBox suggestion={u.getAccountSuggestions()}></SuggestionsBox>
+            <SuggestionsBox suggestion={spendingSugs.join(".")+ accountSugs.join(".") + retireSugs.join(".")}></SuggestionsBox>
         </div>{" "}
       </div>{" "}
       <br />

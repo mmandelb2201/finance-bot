@@ -45,7 +45,7 @@ class RetirementSuggestor{
                 //to simplify calculations, take average interest between Roth and traditional IRA
                 var avgInterest = 0;
                 var count = 0;
-                for(let account in this.user.retirementBankAccounts){
+                for(let account of this.user.retirementBankAccounts){
                     if(account.type == "Roth IRA" || account.type == "Traditional IRA"){
                         avgInterest += account.interest;
                         count += 1;

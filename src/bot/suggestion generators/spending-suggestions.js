@@ -38,7 +38,7 @@ class SpendingSuggestor{
             var restaurantSpending = 0;
             var entertainmentSpending = 0;
             var otherSpending = 0;
-            for(let transaction in this.wantsTransactions){
+            for(let transaction of this.wantsTransactions){
                 switch(transaction.type){
                     case "Restaurant":
                         restaurantSpending += transaction.amount;
@@ -51,7 +51,7 @@ class SpendingSuggestor{
                         break;
                 }
             }
-            for(let transaction in this.wantsReocurringTransactions){
+            for(let transaction of this.wantsReocurringTransactions){
                 let amt = this.user.calculateReoccurMonthlyTotal(transaction);
                 switch(transaction.type){
                     case "Restaurant":
@@ -104,7 +104,7 @@ class SpendingSuggestor{
      * Runs through user transactions and sorts them into wants and needs
      */
     sortTransactions(){
-        for(let transaction in this.user.monthyTransactions){
+        for(let transaction of this.user.monthyTransactions){
             switch(transaction.type){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":
                     this.needsTransactions.push(transaction);
@@ -119,7 +119,7 @@ class SpendingSuggestor{
                     break;
             }
         }
-        for(let transaction in this.user.monthyReoccuringTransactions){
+        for(let transaction of this.user.monthyReoccuringTransactions){
             let amt = this.user.calculateReoccurMonthlyTotal(transaction);
             switch(transaction.type){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":

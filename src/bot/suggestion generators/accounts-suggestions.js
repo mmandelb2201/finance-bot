@@ -1,7 +1,7 @@
 import User from "../../objects/user";
  
 class AccountsSuggestor{
-    
+
     constructor(user){
         this.user = user;
     }
@@ -58,7 +58,7 @@ class AccountsSuggestor{
      */
     totalSaved(){
         var total = 0;
-        for(let account in this.user.bankAccounts){
+        for(let account of this.user.bankAccounts){
             if(account.type != "Roth IRA" && account.type != "Traditional IRA" && account.type != "401K" && account.type != "529"){
                 total += account.balance;
             }
