@@ -43,7 +43,7 @@ class User {
      * Calculates the total gain or loss the user takes in each month based on income and monthy transactions.
      * @returns {number} balance
      */
-    calculateMonthlyTotal(){
+    calculateMonthlyTotal = () => {
         var total = this.income;
         for (let transaction in this.monthyTransactions){
             total = total - transaction.amount;
@@ -51,6 +51,7 @@ class User {
         /*for (var i = 0; i <= this.monthyReoccuringTransactions.length; i++) {
             total = total - this.calculateReoccurMonthlyTotal(this.monthyReoccuringTransactions[i]);
         }*/
+        console.log(total);
         return total;
     }
  
@@ -196,7 +197,7 @@ class User {
     /**
      * Runs through user transactions and sorts them into wants and needs
      */
-     sortTransactions(){
+     sortTransactions = () => {
         for(let transaction in this.monthyTransactions){
             switch(transaction.type){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":
