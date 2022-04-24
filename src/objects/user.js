@@ -2,66 +2,70 @@ import Transaction from "./reoccuringTransaction";
 import ReoccuringTransaction from "./reoccuringTransaction";
 import BankAccount from "./bankAccount";
 import RetirementBankAccount from "./retirementBankAccount";
- 
+import AccountsSuggestor from "../bot/suggestion generators/accounts-suggestions";
+import SpendingSuggestor from "../bot/suggestion generators/spending-suggestions";
+import RetirementSuggestor from "../bot/suggestion generators/retirement-suggestions";
+
 class User {
     name = "";
     email = "";
     income = 0;
-    monthyTransactions = [new Transaction()];
-    monthyReoccuringTransactions = [new ReoccuringTransaction()];
-    bankAccounts = [new BankAccount()];
-    retirementBankAccounts = [new RetirementBankAccount()];
+    monthyTransactions = [];
+    monthyReoccuringTransactions = [];
+    bankAccounts = [];
+    retirementBankAccounts = [];
     totalSpending = 0;
     dateOfBirth = new Date();
     nChildren = 0;
     nChildrenCollege = 0;
     retirementAge = 0;
+    needsSpending = 0;
+    wantsSpending = 0;
+    savingsSpending = 0;
 
-    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts,monthyReoccuringTransactions, retirementAge, nChildren, nChildrenCollege){
+    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts, monthlyReocTrans, retirementAge, nChildren, nChildrenCollege, dOB){
         this.email = email;
         this.name = name;
         this.income = income;
         this.monthyTransactions = monthyTransactions;
         this.retirementBankAccounts = retirementBankAccounts;
-        this.monthyReoccuringTransactions = monthyReoccuringTransactions;
+        this.monthyReoccuringTransactions = monthlyReocTrans;
         this.bankAccounts = bankAccounts;
         this.retirementAge = retirementAge;
         this.nChildren = nChildren;
         this.nChildrenCollege = nChildrenCollege;
+        this.dOB = dOB;
         this.totalSpending = this.calculateMonthlyTotal();
+        this.sortTransactions();
     }
  
     /**
      * Calculates the total gain or loss the user takes in each month based on income and monthy transactions.
      * @returns {number} balance
      */
-
     calculateMonthlyTotal(){
         var total = this.income;
-
         for (let transaction in this.monthyTransactions){
             total = total - transaction.amount;
         }
-        for (let transaction in this.monthyReoccuringTransactions){
-            total = total - this.calculateReoccurMonthlyTotal(transaction);
-        }
+        /*for (var i = 0; i <= this.monthyReoccuringTransactions.length; i++) {
+            total = total - this.calculateReoccurMonthlyTotal(this.monthyReoccuringTransactions[i]);
+        }*/
         return total;
     }
  
     /**
      * Takes a reoccuring transaction obejct and returns how much that totals over the current month
-     * @param {ReoccuringTransaction} reoccurTrans
+     * @param {ReoccuringTransaction} 
      * @returns {number} monthy cost of reoccuring transaction
      */
-
     calculateReoccurMonthlyTotal(reoccurTrans){
         //Check if period is 0. If so, the transaction happens monthly, so only return amount.
         if(reoccurTrans.period === 0){
 
             //Check date bought. If current day of month is past initial transaction day during the month. Apply transaction
             const date = new Date();
-
-            if(date.getDay() >= reoccurTrans.startDate.getDay()){
+            if(date.getDay() >= reoccurTrans.date.getDay()){
                 return reoccurTrans.amount;
             }
 
@@ -77,7 +81,7 @@ class User {
                 return 0;
             }
         }else{
-            const sDate = reoccurTrans.startDate.getTime();
+            const sDate = reoccurTrans.date.getTime();
             const date = new Date();
             const firstDayOfMonth = this.getFirstDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
             const lastDayOfMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
@@ -187,6 +191,53 @@ class User {
             }
         }
         return false;
+    }
+
+    /**
+     * Runs through user transactions and sorts them into wants and needs
+     */
+     sortTransactions(){
+        for(let transaction in this.monthyTransactions){
+            switch(transaction.type){
+                case "Rent": case "Groceries": case "Utilities": case "Clothing":
+                    this.needsTransactions.push(transaction);
+                    this.needsSpending += transaction.amount;
+                    break;
+                case "Entertainment": case "Restaurant":
+                    this.wantsTransactions.push(transaction);
+                    this.wantsSpending += transaction.amount;
+                    break;
+                default:
+                    this.wantsTransactions += transaction.amount;
+                    break;
+            }
+        }
+        this.savingsSpending = this.income - this.needsSpending - this.wantsSpending;
+    }
+
+    /**
+     * Returns the spending suggestions the user can make
+     * @returns {[String]}
+     */
+    getSpendingSuggestions(){
+        let suggestor = new SpendingSuggestor(this);
+        return suggestor.getSuggestions();
+    }
+    /**
+     * Returns the account suggestions the user can make
+     * @returns {[String]}
+     */
+    getAccountSuggestions(){
+        let suggestor = new AccountsSuggestor(this);
+        return suggestor.getSuggestions();
+    }
+    /**
+     * Returns the retirement suggestions the user can make
+     * @returns {[String]}
+     */
+     getRetirementSuggestions(){
+        let suggestor = new RetirementSuggestor(this);
+        return suggestor.getSuggestions();
     }
 }
  

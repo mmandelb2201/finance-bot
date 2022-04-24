@@ -10,18 +10,11 @@ class RetirementBankAccount extends BankAccount{
      * @Param {number} Amount the user adds to this bank account monthly
      * @Param {number} the max amount the employer matches per month
      */
-     type="";
-     balance=0.0;
-     transactionHistory = [];
-     interest = 0.0;
      monthlyContribution = 0;
      employerMatchMax = 0;
  
      constructor(balance, interest, transactionHistory, type, monthlyContribution, employerMatchMax){
-         this.type = type;
-         this.balance = balance;
-         this.transactionHistory = transactionHistory;
-         this.interest = interest;
+         super(balance, interest, transactionHistory, type);
          this.monthlyContribution = monthlyContribution;
          this.employerMatchMax = employerMatchMax;
      }
