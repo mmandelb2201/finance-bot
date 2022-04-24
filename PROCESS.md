@@ -8,9 +8,9 @@
 
 #### Matt
 
-###### __Completed Tasks__ 
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
 ###### **Process Reflection**
 
