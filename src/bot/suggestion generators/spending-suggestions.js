@@ -67,7 +67,7 @@ class SpendingSuggestor{
             }
             //Analyze how wants have been split up
             if(restaurantSpending > nonSpendingPercentage){
-                suggestions.push("You're spending more at restaurants and take-out than saving. Consider spending less at restaraunts with meal kits, or cooking for yourself");
+                suggestions.push("You're spending more at restaurants and take-out than saving. Consider spending less at restaraunts with meal kits, or cooking for yourself.");
                 suggestions.push("Watch the small stuff. If you like passing time in coffee shops, add up what you spend each month. The sum of all those $4 lattes might shock you. So drink water sometimes, or work at home and make your own coffee.");
             }
             if(entertainmentSpending > nonSpendingPercentage){
@@ -91,7 +91,7 @@ class SpendingSuggestor{
                 }
             }
             if(debtPercentage > 0.3){
-                suggestions.push("You're monthly debt payments are high. Try not to take on any more debt until your monthly payments are lower");
+                suggestions.push("You're monthly debt payments are high. Try not to take on any more debt until your monthly payments are lower.");
                 suggestions.push("Try using the snowball method for paying off debt. Make the minimum payments to all your debts, and pay as much as possible on your smallest debt.");
             }
         }else if(nonSpendingPercentage > 0.2 && (nonSpendingPercentage > (wantsPercentage + needsPercentage))){

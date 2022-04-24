@@ -80,7 +80,7 @@ const chartConfigs = {
         </div>{" "}
         <div className="col" id="preview-container-end">
           Suggestion{" "}
-            <SuggestionsBox suggestion={spendingSugs.join(".")+ accountSugs.join(".") + retireSugs.join(".")}></SuggestionsBox>
+            <SuggestionsBox suggestion={spendingSugs.join(" ")+ accountSugs.join(" ") + retireSugs.join(" ")}></SuggestionsBox>
         </div>{" "}
       </div>{" "}
       <br />

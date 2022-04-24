@@ -57,26 +57,26 @@ class RetirementSuggestor{
                 //check if user cannot save enough even with max contributions to both IRA's
                 if(annualDeposit > (maxIRACont * 2)){
                     if(hasRoth && hasTrad && has401K){
-                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. You should also be saving ${formatter.format(saving)} in your 401K per year`);
+                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. You should also be saving ${formatter.format(saving)} in your 401K per year.`);
                     }else if(hasRoth && hasTrad && !has401K){
-                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. Next, open up a 401K and save ${formatter.format(saving)} per year in that account`);
+                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. Next, open up a 401K and save ${formatter.format(saving)} per year in that account.`);
                     }else{
-                        suggestions.push(`To be able to retire safely, you should be maxing out both a Traditional and Roth IRA. Next open up a 401K and save ${formatter.format(saving)} per year in that account`);
+                        suggestions.push(`To be able to retire safely, you should be maxing out both a Traditional and Roth IRA. Next open up a 401K and save ${formatter.format(saving)} per year in that account.`);
                     }
                 }else if(annualDeposit > maxIRACont){
                     //To save enough, the user needs to open a second IRA
                     if(hasRoth && !hasTrad){
-                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Traditional IRA as well. Max out your Roth IRA and save at least ${formatter.format(saving)} per year in the Traditional IRA`);
+                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Traditional IRA as well. Max out your Roth IRA and save at least ${formatter.format(saving)} per year in the Traditional IRA.`);
                     }else if(!hasRoth && hasTrad){
-                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Roth IRA as well. Max out your Traditional IRA and save at least ${formatter.format(saving)} per year in the Roth IRA`);
+                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Roth IRA as well. Max out your Traditional IRA and save at least ${formatter.format(saving)} per year in the Roth IRA.`);
                     }else if(hasRoth && hasTrad){
                         suggestions.push(`To be able to have enough saved for retirement, you should max out the contribution in one of your IRA accounts. In the other one, you should be saving ${formatter.format(saving)} per year.`);
                     }else{
-                        suggestions.push(`To have enough saved for retirement, you should open up both a Traditional and Roth IRA. You should max ut the contribution in one of your IRA accounts. In the other one, you should be saving ${formatter.format(saving)} per years`);
+                        suggestions.push(`To have enough saved for retirement, you should open up both a Traditional and Roth IRA. You should max ut the contribution in one of your IRA accounts. In the other one, you should be saving ${formatter.format(saving)} per years.`);
                     }
                 }else{
                     if(hasRoth || hasTrad){
-                        suggestions.push(`To be able to retire safely, put in ${formatter.format(annualDeposit)} per year to your IRA account`);
+                        suggestions.push(`To be able to retire safely, put in ${formatter.format(annualDeposit)} per year to your IRA account.`);
                     }else{
                         suggestions.push(`To be able to retire safely, open up a Traditional or Roth IRA and save ${formatter.format(annualDeposit)} per year in that account.`)
                     }
@@ -92,9 +92,9 @@ class RetirementSuggestor{
                     suggestions.push(`To be able to retire safely, you should have ${amtAccounts} 401K accounts. Max out ${amtAccounts - 1} of them and save ${excess} in the last one.`);
                 }else{
                     if(has401K){
-                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into your 401K`);
+                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into your 401K.`);
                     }else{
-                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into a 401K`);
+                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into a 401K.`);
 
                     }
                 }
