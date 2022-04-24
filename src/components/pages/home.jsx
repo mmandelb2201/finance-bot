@@ -6,6 +6,7 @@ import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
 import Transaction from "../../objects/transaction";
 import User from "../../objects/user";
+import SuggestionsBox from "../common/suggestions/suggestions";
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -71,15 +72,13 @@ const chartConfigs = {
   return (
     <div className="background">
       <div className="row">
-        <div className="column" id="preview-container-end">
-          <br />
+        <div className="col" id="preview-container-end">
           Account Balances{" "}
         </div>{" "}
-        <div className="column" id="preview-container-center">
+        <div className="col" id="preview-container-center">
             <ReactFC {...chartConfigs} />
         </div>{" "}
-        <div className="column" id="preview-container-end">
-          <br />
+        <div className="col" id="preview-container-end">
           Suggestion{" "}
           <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox>
         </div>{" "}
