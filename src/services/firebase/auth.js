@@ -1,9 +1,9 @@
-import { Timestamp, doc, getDoc } from "firebase/firestore";
+import { Timestamp, doc, getDoc, setDoc } from "firebase/firestore";
 import BankAccount from "../../objects/bankAccount";
 import User from "../../objects/user";
 import { Transaction } from "firebase/firestore";
 import { auth, db } from "./config";
-import { onAuthStateChanged } from "firebase/auth"
+import { onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth"
 
 const userConverter = {
     toFirestore: (user) => {
@@ -97,4 +97,21 @@ const getCurrentUser = () => {
     });
 };
 
-export { userConverter, getCurrentUser };
+const createUser = (name, email, password) => {
+    return new Promise((resolve, reject) =>{
+        createUserWithEmailAndPassword (auth, email, password).then(async (userCredential) => {
+            //Signed in
+            const user = userCredential.user;
+            const uID = user.uid;
+            //TODO: create new user in firestore with specific UID
+            const userRef = doc(db, "users", uID).withConverter(userConverter);
+            await setDoc(userRef, new User(email, name, 0, [], [], [], [], 0, 0, 0, []));
+            resolve("");
+        }).catch((error) => {
+            //TODO: display error to user
+            reject(error.message);
+        })
+    })
+}
+
+export { userConverter, getCurrentUser, createUser };

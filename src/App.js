@@ -11,11 +11,13 @@ import Login from "./components/pages/login";
 import InputData from "./components/pages/inputData";
 import Settings from "./components/pages/settings";
 import ViewAccount from "./components/pages/viewAccount";
+import { FirebaseAuthProvider } from "./contexts";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <FirebaseAuthProvider>
+        <Header />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />{" "}
@@ -26,6 +28,7 @@ function App() {
           <Route path="/view-account" element={<ViewAccount />} />{" "}
         </Routes>{" "}
       </Router>{" "}
+      </FirebaseAuthProvider>
     </div>
   );
 }
