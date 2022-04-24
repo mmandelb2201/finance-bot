@@ -8,7 +8,7 @@
 
 #### Matt
 
-###### **Completed Tasks** 
+###### __Completed Tasks__ 
 
 ###### **Incomplete tasks**
 
