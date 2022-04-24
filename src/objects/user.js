@@ -19,6 +19,9 @@ class User {
     nChildren = 0;
     nChildrenCollege = 0;
     retirementAge = 0;
+    needsSpending = 0;
+    wantsSpending = 0;
+    savingsSpending = 0;
 
     constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts, monthlyReocTrans, retirementAge, nChildren, nChildrenCollege, dOB){
         this.email = email;
@@ -33,6 +36,7 @@ class User {
         this.nChildrenCollege = nChildrenCollege;
         this.dOB = dOB;
         this.totalSpending = this.calculateMonthlyTotal();
+        this.sortTransactions();
     }
  
     /**
@@ -187,6 +191,28 @@ class User {
             }
         }
         return false;
+    }
+
+    /**
+     * Runs through user transactions and sorts them into wants and needs
+     */
+     sortTransactions(){
+        for(let transaction in this.monthyTransactions){
+            switch(transaction.type){
+                case "Rent": case "Groceries": case "Utilities": case "Clothing":
+                    this.needsTransactions.push(transaction);
+                    this.needsSpending += transaction.amount;
+                    break;
+                case "Entertainment": case "Restaurant":
+                    this.wantsTransactions.push(transaction);
+                    this.wantsSpending += transaction.amount;
+                    break;
+                default:
+                    this.wantsTransactions += transaction.amount;
+                    break;
+            }
+        }
+        this.savingsSpending = this.income - this.needsSpending - this.wantsSpending;
     }
 
     /**
