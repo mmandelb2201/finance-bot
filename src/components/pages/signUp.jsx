@@ -30,20 +30,20 @@ const SignUp = () => {
     //     Login{" "}
     //   </a>{" "}
     // </div>
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Group controlId="emailControl">
+    <Form onSubmit={handleSubmit(onSubmit)} className="w-50 mx-auto">
+      <Form.Group className="mb-3 mx-5 mt-5" controlId="emailControl">
         <Form.Label>Email</Form.Label>
         <Form.Control type="text" placeholder="Enter email..." {...register("email")} />
       </Form.Group>
-      <Form.Group controlId="nameControl">
+      <Form.Group className="mb-3 mx-5 mt-3" controlId="nameControl">
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" placeholder="Enter name..." {...register("name")}/>
       </Form.Group>
-      <Form.Group controlId="passwordControl">
+      <Form.Group className="mb-3 mx-5 mt-3" controlId="passwordControl">
         <Form.Label>Password</Form.Label>
         <Form.Control type="text" placeholder="Enter password..." {...register("password")}/>
       </Form.Group>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" className="mx-5">Submit</Button>
     </Form>
   );
 }
