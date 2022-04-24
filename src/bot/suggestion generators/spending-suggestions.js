@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import User from "../../objects/user";
  
 class SpendingSuggestor{
-    user = new User();
     totalSpending = 0;
     needs = 0; //total monthly speding for needs
     wants = 0; //total monthy spending for wants

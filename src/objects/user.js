@@ -43,18 +43,12 @@ class User {
      * Calculates the total gain or loss the user takes in each month based on income and monthy transactions.
      * @returns {number} balance
      */
-    calculateMonthlyTotal = () => {
-        console.log(this.income);
+    calculateMonthlyTotal(){
         let total = this.income;
         for (let transaction of this.monthyTransactions){
-            
             total -= transaction.amount;
         }
         
-        /*for (var i = 0; i <= this.monthyReoccuringTransactions.length; i++) {
-            total = total - this.calculateReoccurMonthlyTotal(this.monthyReoccuringTransactions[i]);
-        }*/
-        console.log(total);
         return total;
     }
  
@@ -182,13 +176,13 @@ class User {
      */
     hasAccount(type){
         if(type === "401K" || type === "Roth IRA" || type === "Traditional IRA"){
-            for(let account in this.retirementBankAccounts){
+            for(let account of this.retirementBankAccounts){
                 if(account.type === type){
                     return true;
                 }
             }
         }else{
-            for(let account in this.bankAccounts){
+            for(let account of this.bankAccounts){
                 if(account.type === type){
                     return true;
                 }
@@ -200,15 +194,14 @@ class User {
     /**
      * Runs through user transactions and sorts them into wants and needs
      */
-     sortTransactions = () => {
-        for(let transaction in this.monthyTransactions){
-            switch(transaction.type){
+     sortTransactions(){
+        for(let transaction of this.monthyTransactions){
+            console.log(transaction.title);
+            switch(transaction.title){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":
-                    this.needsTransactions.push(transaction);
                     this.needsSpending += transaction.amount;
                     break;
                 case "Entertainment": case "Restaurant":
-                    this.wantsTransactions.push(transaction);
                     this.wantsSpending += transaction.amount;
                     break;
                 default:

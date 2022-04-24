@@ -1,9 +1,7 @@
 import User from "../../objects/user";
  
 class AccountsSuggestor{
-
-    user = new User();
-
+    
     constructor(user){
         this.user = user;
     }

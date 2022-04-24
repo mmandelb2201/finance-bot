@@ -6,6 +6,10 @@ import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
 import Transaction from "../../objects/transaction";
 import User from "../../objects/user";
+import SuggestionsBox from "../common/suggestions/suggestions"
+import AccountsSuggestor from "../../bot/suggestion generators/accounts-suggestions";
+import SpendingSuggestor from "../../bot/suggestion generators/spending-suggestions";
+import RetirementSuggestor from "../../bot/suggestion generators/retirement-suggestions";
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -22,21 +26,10 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
-let u = new User("f", "", 1000,[new Transaction(100, "Rent", "Rent", new Date())], [new BankAccount(100, 0.3, [new Transaction(100, "Groceries", "Groceries", new Date())], "Checking")], [new RetirementBankAccount(100, 0.2, [new Transaction(100, "Groceries", "Groceries", new Date())], "401K", 50, 50)],  [], 60, 2, 3, new Date());
-
-
 const Home = () => {
 
-  /*console.log(u.getAccountSuggestions());
-  console.log(u.getRetirementSuggestions());
-  console.log(u.getSpendingSuggestions());*/
-
-  //changes number to current format
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'usd'
-  });
-
+  let u = new User("f", "", 1000,[new Transaction(100, "Rent", "Rent", new Date())], [new BankAccount(100, 0.3, [new Transaction(100, "Groceries", "Groceries", new Date())], "Checking")], [new RetirementBankAccount(100, 0.2, [new Transaction(100, "Groceries", "Groceries", new Date())], "401K", 50, 50)],  [], 60, 2, 3, new Date());
+  console.log(u.totalSpending);
   // Preparing the chart data
 const chartData = [
   {
@@ -62,12 +55,9 @@ const chartConfigs = {
   dataSource: {
     // Chart Configuration
     chart: {
-      caption: "Countries With Most Oil Reserves [2017-18]",    //Set the chart caption
-      subCaption: "In MMbbl = One Million barrels",             //Set the chart subcaption
-      xAxisName: "Country",           //Set the x-axis name
-      yAxisName: "Reserves (MMbbl)",  //Set the y-axis name
+      caption: "Monthly Spending Breakdown",    //Set the chart caption
       numberSuffix: "K",
-      theme: "fusion"                 //Set the theme for your chart
+      theme: "fusion" //Set the theme for your chart
     },
     // Chart Data - from step 2
     data: chartData
@@ -87,7 +77,7 @@ const chartConfigs = {
         <div className="column" id="preview-container-end">
           <br />
           Suggestion{" "}
-          {/* <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox> */}
+            <SuggestionsBox suggestion={u.getAccountSuggestions()}></SuggestionsBox>
         </div>{" "}
       </div>{" "}
       <br />
