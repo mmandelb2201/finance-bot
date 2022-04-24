@@ -23,28 +23,34 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
-let u = new User("f", "", 1000000,[new Transaction(100, "Rent", "Rent", new Date())], [new BankAccount(100, 0.3, [new Transaction(100, "Groceries", "Groceries", new Date())], "Checking")], [new RetirementBankAccount(100, 0.2, [new Transaction(100, "Groceries", "Groceries", new Date())], "401K", 50, 50)],  [], 60, 2, 3, new Date());
+let u = new User("f", "", 1000,[new Transaction(100, "Rent", "Rent", new Date())], [new BankAccount(100, 0.3, [new Transaction(100, "Groceries", "Groceries", new Date())], "Checking")], [new RetirementBankAccount(100, 0.2, [new Transaction(100, "Groceries", "Groceries", new Date())], "401K", 50, 50)],  [], 60, 2, 3, new Date());
 
 
 const Home = () => {
 
-  console.log(u.getAccountSuggestions());
+  /*console.log(u.getAccountSuggestions());
   console.log(u.getRetirementSuggestions());
-  console.log(u.getSpendingSuggestions());
+  console.log(u.getSpendingSuggestions());*/
+
+  //changes number to current format
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'usd'
+  });
 
   // Preparing the chart data
 const chartData = [
   {
     label: "Wants",
-    value: "290"
+    value: `${u.wantsSpending}`
   },
   {
     label: "Needs",
-    value: "260"
+    value: `${u.needsSpending}`
   },
   {
     label: "Savings",
-    value: "250"
+    value: `${u.savingsSpending}`
   }
 ];
 
@@ -80,7 +86,7 @@ const chartConfigs = {
         </div>{" "}
         <div className="col" id="preview-container-end">
           Suggestion{" "}
-          <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox>
+          {/* <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox> */}
         </div>{" "}
       </div>{" "}
       <br />
