@@ -46,11 +46,11 @@
 
 #### Matt
 
-###### Completed Tasks 
+###### Completed Tasks - Completed suggestion generators and the bot as a whole. The bot now effectively takes a look at user financial data and returns suggestions on how they can improve.
 
-###### Incomplete tasks
+###### Incomplete tasks - There are a couple of bugs in the bot and a couple of non-core functions that do not work as intended as of right now. Some of the website styling needs to be updated.
 
-###### Process Reflection
+###### Process Reflection - The big lesson I took away from this is the importance of testing as you are developing. Near the end of the iteration, much of the time was spent testing the bot. A lot of the bugs should have been fixed sooner. They problably would have been fixed sooner if we had been testing sooner. Because of this, unnecesarry stuff about the website such as styling and remote database functionality were put on the backburner. Other than that, the documentation again was very userful for consitent, clear development between the entire team. 
 
 #### Jack
 
