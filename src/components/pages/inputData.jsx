@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function InputData() {
-
   function AddMonthly() {
     var monthlyform = `<div class="col">
       <div>
@@ -26,28 +24,34 @@ function InputData() {
       <div>
         <input type="number" class="form-control" id="MonthlyExpenses" placeholder="Money Spent on Clothes e.g. 57.32"></input>
       </div>
-    </div>`
-    
-    var div = document.getElementById('monthly-expenses')
-    div.append(monthlyform)
+    </div>`;
+
+    var div = document.getElementById("monthly-expenses");
+    div.append(monthlyform);
   }
 
-  return(
+  return (
     <div class="container-sm">
       <div>
         <h2>Please Input Finacial Data</h2>
       </div>
 
-
       <form>
         <div class="row">
           <div class="col">
-            <label for="YearlyIncome" class="form-label">What is your yearly income?</label>
+            <label for="YearlyIncome" class="form-label">
+              What is your yearly income?
+            </label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="YearlyIncome" placeholder="Monthly Spending e.g. 70000"></input>
+              <input
+                type="number"
+                class="form-control"
+                id="YearlyIncome"
+                placeholder="Monthly Spending e.g. 70000"
+              ></input>
               <div class="input-group-append">
                 <span class="input-group-text">.00</span>
               </div>
@@ -56,12 +60,19 @@ function InputData() {
         </div>
 
         <div class="row" id="monthly-expenses-savings">
-          <label for="MonthlyExpenses" class="form-label">What Are Your Monethly Expenses?</label>
+          <label for="MonthlyExpenses" class="form-label">
+            What Are Your Monthly Expenses?
+          </label>
           <div class="input-group mb-3">
             <div class="input-group-prepend w-25 text-center">
               <span class="input-group-text">Savings</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="Money Spent on Clothes e.g. 57.32"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="Money Spent on Clothes e.g. 57.32"
+            ></input>
           </div>
         </div>
 
@@ -70,7 +81,12 @@ function InputData() {
             <div class="input-group-prepend w-25 text-center">
               <span class="input-group-text">Rent</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
 
@@ -79,7 +95,12 @@ function InputData() {
             <div class="input-group-prepend w-25 text-center">
               <span class="input-group-text">Groceries</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
 
@@ -88,7 +109,12 @@ function InputData() {
             <div class="input-group-prepend w-25 text-center">
               <span class="input-group-text">Utilites</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
 
@@ -97,7 +123,12 @@ function InputData() {
             <div class="input-group-prepend w-25 text-center">
               <span class="input-group-text">Entertainment</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
 
@@ -106,7 +137,12 @@ function InputData() {
             <div class="input-group-prepend w-25">
               <span class="input-group-text">Clothing</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
 
@@ -115,7 +151,12 @@ function InputData() {
             <div class="input-group-prepend w-25">
               <span class="input-group-text">Restaurants</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
 
@@ -124,14 +165,18 @@ function InputData() {
             <div class="input-group-prepend w-25">
               <span class="input-group-text">Other</span>
             </div>
-            <input type="number" class="form-control" id="" placeholder="1133.33"></input>
+            <input
+              type="number"
+              class="form-control"
+              id=""
+              placeholder="1133.33"
+            ></input>
           </div>
         </div>
-        
       </form>
     </div>
-  )
-};
+  );
+}
 
 /*
         <div class="row">
