@@ -6,10 +6,14 @@ import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
 import Transaction from "../../objects/transaction";
 import User from "../../objects/user";
+<<<<<<< HEAD
 import SuggestionsBox from "../common/suggestions/suggestions"
 import AccountsSuggestor from "../../bot/suggestion generators/accounts-suggestions";
 import SpendingSuggestor from "../../bot/suggestion generators/spending-suggestions";
 import RetirementSuggestor from "../../bot/suggestion generators/retirement-suggestions";
+=======
+import SuggestionsBox from "../common/suggestions/suggestions";
+>>>>>>> 80b8cf3bdfd7fd7e32ca7dbe8528b30101f0c232
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -67,15 +71,13 @@ const chartConfigs = {
   return (
     <div className="background">
       <div className="row">
-        <div className="column" id="preview-container-end">
-          <br />
+        <div className="col" id="preview-container-end">
           Account Balances{" "}
         </div>{" "}
-        <div className="column" id="preview-container-center">
+        <div className="col" id="preview-container-center">
             <ReactFC {...chartConfigs} />
         </div>{" "}
-        <div className="column" id="preview-container-end">
-          <br />
+        <div className="col" id="preview-container-end">
           Suggestion{" "}
             <SuggestionsBox suggestion={u.getAccountSuggestions()}></SuggestionsBox>
         </div>{" "}
