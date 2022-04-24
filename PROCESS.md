@@ -8,67 +8,65 @@
 
 #### Matt
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
 
 #### Jack
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
 
 #### Mikayla
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
 
 #### Dylan
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
 
 ### Iteration 2: Apr 11 - Apr 24
 
 
-#### Matt
+###### **Completed Tasks**
 
-###### Completed Tasks
+###### **Incomplete tasks**
 
-###### Incomplete tasks
-
-###### Process Reflection
+###### **Process Reflection**
 
 #### Jack
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
 
 #### Mikayla
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
 
 #### Dylan
 
-###### Completed Tasks
+###### **Completed Tasks**
 
-###### Incomplete tasks
+###### **Incomplete tasks**
 
-###### Process Reflection
+###### **Process Reflection**
