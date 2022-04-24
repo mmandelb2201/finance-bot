@@ -8,8 +8,8 @@ import { createUser } from "./../../services/firebase/auth";
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    createUser(data.name, data.email, data.password).then((res)=>{
+  const onSubmit = ({ name, email, password }) => {
+    createUser(name, email, password).then((res)=>{
       // Account created successfully
       alert("Account Created Successfully!");
       window.location.href ="/";

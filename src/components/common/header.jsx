@@ -9,6 +9,7 @@ import { useFirebaseAuth } from "./../../hooks";
 function Header() {
 
   const { name } = useFirebaseAuth();
+  console.log(name);
   return (
     <Navbar bg="success" expand="lg">
       <Container fluid>
@@ -25,6 +26,7 @@ function Header() {
           </NavDropdown.Item>
           <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
           <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
+          <NavDropdown.Item href="/login">Sign In</NavDropdown.Item>
         </NavDropdown>
       </Container>
     </Navbar>

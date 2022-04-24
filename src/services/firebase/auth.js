@@ -3,7 +3,7 @@ import BankAccount from "../../objects/bankAccount";
 import User from "../../objects/user";
 import { Transaction } from "firebase/firestore";
 import { auth, db } from "./config";
-import { onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth"
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 
 const userConverter = {
     toFirestore: (user) => {
@@ -37,7 +37,7 @@ const userConverter = {
                     return convertTransaction(tr);
                 });
             }),
-            dateOfBirth: Timestamp.fromDate(user.dateOfBirth),
+            dOB: Timestamp.fromDate(user.dateOfBirth),
             ...user     
         }
     },
@@ -71,7 +71,8 @@ const userConverter = {
             data.monthyReoccuringTransactions.map(t => convertToTransaction(t)),
             data.retirementAge,
             data.nChildren,
-            data.nChildrenCollege
+            data.nChildrenCollege,
+            data.dOB.toDate()
         )
     }
 };
@@ -105,7 +106,7 @@ const createUser = (name, email, password) => {
             const uID = user.uid;
             //TODO: create new user in firestore with specific UID
             const userRef = doc(db, "users", uID).withConverter(userConverter);
-            await setDoc(userRef, new User(email, name, 0, [], [], [], [], 0, 0, 0, []));
+            await setDoc(userRef, new User(email, name, 0, [], [], [], [], 0, 0, 0, new Date()));
             resolve("");
         }).catch((error) => {
             //TODO: display error to user
@@ -114,4 +115,18 @@ const createUser = (name, email, password) => {
     })
 }
 
-export { userConverter, getCurrentUser, createUser };
+function signIn(email, password){
+    return new Promise((resolve, reject) =>{
+        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            //Signed in
+            const user = userCredential.user;
+            window.location = "http://localhost:3000/home";
+            resolve("");
+        }).catch((error) => {
+            const errorMessage = error.message;
+            reject(errorMessage);
+        })
+    })
+}
+
+export { userConverter, getCurrentUser, createUser, signIn};
