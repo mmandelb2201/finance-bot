@@ -8,15 +8,15 @@ import { useFirebaseAuth } from "./../../hooks";
 
 function Header() {
 
-  const { name } = useFirebaseAuth();
-  console.log(name);
+  const user = useFirebaseAuth();
+ 
   return (
     <Navbar bg="success" expand="lg">
       <Container fluid>
         <Navbar.Brand href="/">FinanceBot</Navbar.Brand>
       </Container>
       <Container className="justify-content-end">
-        <Navbar.Text>{name ? `Welcome, ${name}` : "Sign In"}</Navbar.Text>
+        <Navbar.Text>{user.name ? `Welcome, ${user.name}` : "Sign In"}</Navbar.Text>
         <NavDropdown title="Action" id="navbarScrollingDropdown">
           <NavDropdown.Item href="/input-data">
             Input Financial Data

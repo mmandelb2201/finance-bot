@@ -84,8 +84,9 @@ const getCurrentUser = () => {
                 //TODO: Get user data from firestore and create user object
                 const userRef = doc(db, "users", user.uid).withConverter(userConverter);
                 const docSnap = await getDoc(userRef);
-                if (docSnap.exists) {
+                if (docSnap.exists()) {
                     let user = docSnap.data();
+                    
                     resolve(user);
                 } else {
                     reject(new Error('User does not exist!'));
@@ -129,4 +130,4 @@ function signIn(email, password){
     })
 }
 
-export { userConverter, getCurrentUser, createUser, signIn};
+export { getCurrentUser, createUser, signIn};
