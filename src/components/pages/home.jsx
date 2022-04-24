@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Chart from "../../dist/donut";
 import "./pages.css";
+import "../common/suggestions/suggestions"
+import SuggestionsBox from "../common/suggestions/suggestions";
 
 const Home = () => {
   return (
@@ -16,6 +18,7 @@ const Home = () => {
         <div className="column" id="preview-container-end">
           <br />
           Suggestion{" "}
+          <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox>
         </div>{" "}
       </div>{" "}
       <br />

@@ -3,11 +3,11 @@ import './suggestions.css';
 
 
 // TODO: add getListing to get all listing information
-const SuggestionsBox = ({ suggestions }) => {
+const SuggestionsBox = ( props ) => {
    
-    return (<a className="link" href={"/view-item/" + id}>
+    return (<a className="link">
             <div className='preview-container'>
-                <p className='preview-paragraph'>{ suggestions }</p>
+                <p className='preview-paragraph'>{ props.suggestion }</p>
             </div>
         </a>
     );
