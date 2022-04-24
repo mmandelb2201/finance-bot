@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Chart from "../../dist/donut";
+import "./pages.css";
 import BankAccount from "../../objects/bankAccount";
 import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
@@ -13,7 +15,26 @@ const Home = () => {
   console.log(u.getAccountSuggestions());
   console.log(u.getRetirementSuggestions());
   console.log(u.getSpendingSuggestions());
-  return <h1>{u.dateOfBirth.getTime()}</h1>;
+
+  return (
+    <div className="background">
+      <div className="row">
+        <div className="column" id="preview-container-end">
+          <br />
+          Account Balances{" "}
+        </div>{" "}
+        <div className="column" id="preview-container-center">
+          DATA VIS
+        </div>{" "}
+        <div className="column" id="preview-container-end">
+          <br />
+          Suggestion{" "}
+        </div>{" "}
+      </div>{" "}
+      <br />
+      <br />
+    </div>
+  );
 };
 
 export default Home;

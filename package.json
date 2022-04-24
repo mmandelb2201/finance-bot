@@ -10,9 +10,11 @@
         "firebase": "^9.6.11",
         "firebase-init": "^1.3.2",
         "firestore": "^1.1.6",
+        "fusioncharts": "^3.18.0",
         "react": "^18.0.0",
         "react-bootstrap": "^2.3.0",
         "react-dom": "^18.0.0",
+        "react-fusioncharts": "^3.1.2",
         "react-router-dom": "^6.3.0",
         "react-scripts": "^2.1.3",
         "web-vitals": "^2.1.4"
