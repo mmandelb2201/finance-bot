@@ -1,74 +1,74 @@
-# Documentation on story creation and assignment at EACH iteration (one option is to include screenshots of kanban board).
+## Documentation on story creation and assignment at EACH iteration (one option is to include screenshots of kanban board).
 
-# Any scrum meeting notes.
+## Any scrum meeting notes.
 
-# Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
+## Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
 
-## Mar 28 - Apr 10
+### Iteration 1: Mar 28 - Apr 10
 
-### Matt
+#### Matt
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-### Jack
+#### Jack
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-### Mikayla
+#### Mikayla
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-### Dylan
+#### Dylan
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-## Apr 11 - Apr 24
+### Iteration 2: Apr 11 - Apr 24
 
 
-### Matt
+#### Matt
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-### Jack
+#### Jack
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-### Mikayla
+#### Mikayla
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
 
-### Dylan
+#### Dylan
 
-##### Completed Tasks
+###### Completed Tasks
 
-##### Incomplete tasks
+###### Incomplete tasks
 
-##### Process Reflection
+###### Process Reflection
