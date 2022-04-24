@@ -4,7 +4,9 @@
 
 ## Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
 
+
 ### Iteration 1: Mar 28 - Apr 10
+
 
 #### Matt
 
@@ -12,61 +14,64 @@
 
 ###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
 
 #### Jack
 
-###### **Completed Tasks**
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
 
 #### Mikayla
 
-###### **Completed Tasks**
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
 
 #### Dylan
 
-###### **Completed Tasks**
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
+
 
 ### Iteration 2: Apr 11 - Apr 24
 
 
-###### **Completed Tasks**
+#### Matt
 
-###### **Incomplete tasks**
+###### Completed Tasks 
 
-###### **Process Reflection**
+###### Incomplete tasks
+
+###### Process Reflection
 
 #### Jack
 
-###### **Completed Tasks**
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
 
 #### Mikayla
 
-###### **Completed Tasks**
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
 
 #### Dylan
 
-###### **Completed Tasks**
+###### Completed Tasks 
 
-###### **Incomplete tasks**
+###### Incomplete tasks
 
-###### **Process Reflection**
+###### Process Reflection
