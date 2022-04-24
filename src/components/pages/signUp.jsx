@@ -17,7 +17,6 @@ const SignUp = () => {
   }).catch((error)=>{
       // Error with account creation, display error
       console.log(error);
-      setError(error);
   });
   }
   return (
