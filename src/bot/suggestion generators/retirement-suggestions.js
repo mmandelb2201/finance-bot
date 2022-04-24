@@ -17,11 +17,11 @@ class RetirementSuggestor{
         //Array that contains suggestions
         var suggestions = [];
         //amount of years until the user reaches retirement age
-        year_diff = this.user.retirementAge - this.user.getAge();
+        let yearDiff = this.user.retirementAge - this.user.getAge();
         //amount the user should have saved by retirement going by the rule of 25. Not including inflation.
         var retirementTotal = (this.user.income - this.user.calculateMonthlyTotal) * 12 * 25;
         //calcualte retirement total in future value
-        var realRetirementTotal = this.caluclateFutueValue(retirementTotal, 0.025, year_diff);
+        var realRetirementTotal = this.caluclateFutueValue(retirementTotal, 0.025, yearDiff);
         //total amount the user will have in their account by the time they retire
         var savingsByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
         //Find how much the user will have if they continue saving as they are
@@ -54,7 +54,7 @@ class RetirementSuggestor{
                     }
                 }
                 avgInterest = avgInterest/count;   
-                let annualDeposit = this.calculateAnnualRequiredSavings(year_diff, savingsByRetirement[0], avgInterest);
+                let annualDeposit = this.calculateAnnualRequiredSavings(yearDiff, savingsByRetirement[0], avgInterest);
                 let saving = annualDeposit - maxIRACont;
                 //check if user cannot save enough even with max contributions to both IRA's
                 if(annualDeposit > (maxIRACont * 2)){
@@ -63,7 +63,7 @@ class RetirementSuggestor{
                     }else if(hasRoth && hasTrad && !has401K){
                         suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. Next, open up a 401K and save ${formatter.format(saving)} per year in that account`);
                     }else{
-                        suggestions.push(`To be able to retire safely, you should be maxing out both a Traditional and Roth IRA. Next open up a 401K and save ${formatter.format(savings)} per year in that account`);
+                        suggestions.push(`To be able to retire safely, you should be maxing out both a Traditional and Roth IRA. Next open up a 401K and save ${formatter.format(saving)} per year in that account`);
                     }
                 }else if(annualDeposit > maxIRACont){
                     //To save enough, the user needs to open a second IRA
@@ -87,7 +87,7 @@ class RetirementSuggestor{
                 //user makes too much to save into an IRA account
                 let has401K = this.user.hasAccount("401K");
                 let maxCont = this.user.getMax401KCont();
-                let annualDeposit = this.calculateAnnualRequiredSavings(year_diff, savingsByRetirement[0], avgInterest);
+                let annualDeposit = this.calculateAnnualRequiredSavings(yearDiff, savingsByRetirement[0], avgInterest);
                 if(annualDeposit > maxCont){
                     let amtAccounts = Math.ceil(annualDeposit/maxCont);
                     let excess = annualDeposit % maxCont;
@@ -111,15 +111,15 @@ class RetirementSuggestor{
      */
     calculateCurrentTrendByRetirement(retirement_age){
         //amount of years until the user reaches retirement age
-        year_diff = retirement_age - this.user.getAge();
+        let yearDiff = retirement_age - this.user.getAge();
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
         //run through the user's accounts and save the one's that are retirement accounts 
         for(let account in this.user.retirementBankAccounts){
-            futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.calculateFutureValueWithMonthy(account, year_diff);
+            futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.calculateFutureValueWithMonthy(account, yearDiff);
         }
         //future account balance of retirement accounts including the effect of inflation
-        var futureRealTotalRetirementAccountBalances = this.calculateRealFutureValue(futureTotalRetirementAccountBalances, year_diff);
+        var futureRealTotalRetirementAccountBalances = this.calculateRealFutureValue(futureTotalRetirementAccountBalances, yearDiff);
         return [futureTotalRetirementAccountBalances, futureRealTotalRetirementAccountBalances];
     }
     /**
@@ -129,14 +129,14 @@ class RetirementSuggestor{
      */
     calculateCurrentSavingsByRetirement(retirement_age){
         //amount of years until the user reaches retirement age
-        year_diff = retirement_age - this.user.getAge();
+        let yearDiff = retirement_age - this.user.getAge();
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
         for(let account in this.user.retirementBankAccounts){
-            futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.caluclateFutueValue(account.balance, account.interest, year_diff);
+            futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.caluclateFutueValue(account.balance, account.interest, yearDiff);
         }
         //future account balance of retirement accounts including the effect of inflation
-        var futureRealTotalRetirementAccountBalances = this.calculateRealFutureValue(futureTotalRetirementAccountBalances, year_diff);
+        var futureRealTotalRetirementAccountBalances = this.calculateRealFutureValue(futureTotalRetirementAccountBalances, yearDiff);
         return [futureTotalRetirementAccountBalances, futureRealTotalRetirementAccountBalances];
     }
     
@@ -153,7 +153,7 @@ class RetirementSuggestor{
         if(diff > 0){
             return 0;
         }else{
-            return annualPayments = diff*((interest*(1+interest)**periods)/(1+interest)**periods - 1);
+            return diff*((interest*(1+interest)**periods)/(1+interest)**periods - 1);
         }
     }
     /**

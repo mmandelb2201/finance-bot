@@ -59,7 +59,7 @@ class AccountsSuggestor{
      * @returns {number} total balance saved
      */
     totalSaved(){
-        total = 0;
+        var total = 0;
         for(let account in this.user.bankAccounts){
             if(account.type != "Roth IRA" && account.type != "Traditional IRA" && account.type != "401K" && account.type != "529"){
                 total += account.balance;
