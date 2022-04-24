@@ -44,10 +44,13 @@ class User {
      * @returns {number} balance
      */
     calculateMonthlyTotal = () => {
-        var total = this.income;
-        for (let transaction in this.monthyTransactions){
-            total = total - transaction.amount;
+        console.log(this.income);
+        let total = this.income;
+        for (let transaction of this.monthyTransactions){
+            
+            total -= transaction.amount;
         }
+        
         /*for (var i = 0; i <= this.monthyReoccuringTransactions.length; i++) {
             total = total - this.calculateReoccurMonthlyTotal(this.monthyReoccuringTransactions[i]);
         }*/

@@ -87,7 +87,7 @@ const chartConfigs = {
         <div className="column" id="preview-container-end">
           <br />
           Suggestion{" "}
-          <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox>
+          {/* <SuggestionsBox suggestion="Please have your daily penis inspection"></SuggestionsBox> */}
         </div>{" "}
       </div>{" "}
       <br />
