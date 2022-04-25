@@ -2,7 +2,6 @@
 
 ## Any scrum meeting notes.
 ---
----
 #### Meeting 2/18
 - Created Minimum Viable Product:
 - Aggregate a persons different finances into one place
