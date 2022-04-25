@@ -6,7 +6,15 @@
 - Created User Stories
 - Ranked user stories based on complexity
 - Developers assigned themselves to a desired user story 
-
+#### Meeting 3/17
+- Began discussing how to implement the bot logic
+- Detailed how the user, account, and transaction objects would act
+- Discussed how to display data to the user
+- Mikayla to look into data visualization
+- Matt to begin detailing how the bot will work and create documentation
+- Dylan to look into remotly hosting the bot
+- Jack to research more healthy budgeting habits to include in the bot
+#### Meeting 3/24
 
 ## Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
 
