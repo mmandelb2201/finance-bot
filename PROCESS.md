@@ -3,9 +3,9 @@
 ## Any scrum meeting notes.
 
 #### Meeting 3/10
--Created User Stories
--Ranked user stories based on complexity
--Developers assigned themselves to a desired user story 
+- Created User Stories
+- Ranked user stories based on complexity
+- Developers assigned themselves to a desired user story 
 
 
 ## Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
