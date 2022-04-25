@@ -26,11 +26,11 @@
 
 #### Mikayla
 
-###### Completed Tasks 
+###### Completed Tasks -  created basic header with logo and bootstrap dropdown component with simple styling. Dropdown had various user actions, and was able to redirect them to those pages. 
 
-###### Incomplete tasks
+###### Incomplete tasks -  Intended to create skeleton for home page, that would show account balances, financial suggestions as well as a categorized graphic of the user’s financial monthly spending. 
 
-###### Process Reflection
+###### Process Reflection - The group emphasized the power of react-bootstrap, and it revolutionized the way i go about creating websites; incredibly easier and more powerful substitute for hard-coded html bodies. My time management on this sprint was handled very well, and it a standard I would like to keep. 
 
 #### Dylan
 
@@ -62,11 +62,11 @@
 
 #### Mikayla
 
-###### Completed Tasks 
+###### Completed Tasks -  Imported and catered a data visualization program to import user data from firebase and automate a graphic that reflects said data in a pie chart showed on the front page.  Also helped with general consistency of styling throughout the site.
 
-###### Incomplete tasks
+###### Incomplete tasks - Was planning on helping with the login/sign up pages but spent almost all of my time rendering the graphic. The site had various bugs, as mentioned by my groupmates, and I also wanted to contribute more to these corrections before deployment.
 
-###### Process Reflection
+###### Process Reflection - Above all, the biggest takeaway from this last sprint was I wish that I had a stronger knowledge of GitHub. Much of my time was spent fixing dependency and other compilation issues, mostly because of inconsistencies on my end. I believe if I had a stronger knowledge of the continuous integration process via GitHub, I could’ve compared pulled with our main branch more and that would’ve alleviated many of my struggles. I learned there is much more I need to learn.  
 
 #### Dylan
 
