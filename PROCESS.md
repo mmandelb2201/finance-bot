@@ -93,11 +93,11 @@ Complexity: 1
 
 #### Jack
 
-###### Completed Tasks -
+###### Completed Tasks - Added login and signup features to the website
 
-###### Incomplete Tasks -
+###### Incomplete Tasks - Still need to add suggestions component and expenses form
 
-###### Process Reflection -
+###### Process Reflection - Getting used to using react components, and trying to understand how props work with databases. Trying to start using bootstrap and its weird and unfamiliar but without a doubt powerful as it makes the css styling so much easier to create and understand but I constantly find myself looking back on the documentation for bootstrap.
 
 #### Dylan
 
