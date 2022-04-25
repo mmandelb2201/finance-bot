@@ -15,6 +15,9 @@
 - Dylan to look into remotely hosting the bot
 - Jack to research more healthy budgeting habits to include in the bot
 #### Meeting 3/24
+- Went over how the bot will work to ensure all members understand the bot logic and how the objects interact with each other
+- Split up more specific tasks for development for the first iteration
+
 
 ## Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
 
