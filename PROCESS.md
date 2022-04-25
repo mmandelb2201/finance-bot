@@ -1,4 +1,14 @@
 ## Documentation on story creation and assignment at EACH iteration (one option is to include screenshots of kanban board).
+![alt text](https://github.com/mmandelb2201/finance-bot/blob/main/img/KanBan%20board%20v1.JPG)
+KanBan Board 1
+![alt text](https://github.com/mmandelb2201/finance-bot/blob/main/img/KanBan%20board%20v2.JPG)
+KanBan Board 2
+![alt text](https://github.com/mmandelb2201/finance-bot/blob/main/img/KanBan%20Board%20v3.JPG)
+KanBan Board 3
+![alt text](https://github.com/mmandelb2201/finance-bot/blob/main/img/KanBan%20board%20v4.JPG)
+KanBan Board 4
+![alt text](https://github.com/mmandelb2201/finance-bot/blob/main/img/KanBan%20board%20v5.JPG)
+KanBan Board 5
 
 ### User Stories
 1. Someone who is looking for recommendations on how to improve their financial situation. So that they can live more comfortably and have money saved for emergencies and retirement.  
