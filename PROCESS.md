@@ -78,13 +78,11 @@
 
 ###### Process Reflection - A couple of things helped making the objects simpler. First, was making detailed documentation before we started developing. Since finances can be extremely complicated, we needed to do things in a specific way to make development easier. Therefore, many document were made detailing how the objects would be made and how they would be used. This allowed for good, consistent development. Also, documenting specifically what the bot would look for about the user was extremely helpful. For example, we would look to see if the user spent more than 30% of their income to wants, to which we had recomendations lined up to give the user if that was the case. Overall, this iteration showed the importance of detailed diagrams and documentation.
 
-#### Jack
+###### Completed Tasks - created the framework for a user login and signup
 
-###### Completed Tasks 
+###### Incomplete tasks - create framework for user to imput financial information, create componant for adding suggestions
 
-###### Incomplete tasks
-
-###### Process Reflection
+###### Process Reflection - Slowly got better at using react with creating the login and signup. Still learning a lot about react trying to implement bootstrap is a little difficult but there is no doubt that it has made things easier its just a matter of getting used to and understanding the syntax. Overall however it is very apparent that if I wish to continue doing bootstrap in order to develop components that are more stylish and useful.
 
 #### Mikayla
 
