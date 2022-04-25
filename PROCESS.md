@@ -97,11 +97,11 @@
 
 #### Jack
 
-###### Completed Tasks 
+###### Completed Tasks - Completed expenses form and suggestions component
 
-###### Incomplete tasks
+###### Incomplete tasks - Need to re-stylize them and revamp them to be prettier and cleaner
 
-###### Process Reflection
+###### Process Reflection - Deffinitly got more used to using react and bootstrap and have overall become better at using both. Still need more practice but overal happy with the results. Occasionally my github knowledge would fail me but I was able to get what I needed done done. 
 
 #### Mikayla
 
