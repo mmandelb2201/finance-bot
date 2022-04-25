@@ -67,6 +67,14 @@
 
 ###### Process Reflection - The group emphasized the power of react-bootstrap, and it revolutionized the way i go about creating websites; incredibly easier and more powerful substitute for hard-coded html bodies. My time management on this sprint was handled very well, and it a standard I would like to keep. 
 
+#### Jack
+
+###### Completed Tasks -
+
+###### Incomplete Tasks -
+
+###### Process Reflection -
+
 #### Dylan
 
 ###### Completed Tasks - Set up firebase project and integrate firebase into bot application. Use Firebase's Cloud Firestore to store user information. Create functions to wrap backend-as-a-service functionality to get objects that will be visualized as financial data.
