@@ -1,11 +1,26 @@
 ## Documentation on story creation and assignment at EACH iteration (one option is to include screenshots of kanban board).
 
 ## Any scrum meeting notes.
-
+---
+#### Meeting 2/18
+- Created Minimum Viable Product:
+- Aggregate a persons different finances into one place
+- Add data visualization for a persons finances
+- Give suggestins about budgeting
+#
+- Accomplished: started idea, logic structure and MVP for bot
+- To Do: create user stories, further vision and scope of project
+- Obstacles: method of attack, the “what” and “how” of the product
+---
 #### Meeting 3/10
 - Created User Stories
 - Ranked user stories based on complexity
 - Developers assigned themselves to a desired user story 
+#
+- Accomplished: 
+- To Do: 
+- Obstacles: 
+---
 #### Meeting 3/17
 - Began discussing how to implement the bot logic
 - Detailed how the user, account, and transaction objects would act
@@ -14,10 +29,40 @@
 - Matt to begin detailing how the bot will work and create documentation
 - Dylan to look into remotely hosting the bot
 - Jack to research more healthy budgeting habits to include in the bot
+#
+- Accomplished: 
+- To Do: 
+- Obstacles: 
+---
 #### Meeting 3/24
 - Went over how the bot will work to ensure all members understand the bot logic and how the objects interact with each other
 - Split up more specific tasks for development for the first iteration
-
+#
+- Accomplished: 
+- To Do: 
+- Obstacles: 
+---
+#### Meeting 4/10
+-
+#
+- Accomplished: 
+- To Do: 
+- Obstacles: 
+---
+#### Meeting 4/16
+-
+#
+- Accomplished: 
+- To Do: 
+- Obstacles: 
+---
+#### Meeting 4/20
+-
+#
+- Accomplished: 
+- To Do: 
+- Obstacles: 
+---
 
 ## Include documentation of EACH iteration end. Include status of completed and incomplete tasks, and a process reflection.
 
