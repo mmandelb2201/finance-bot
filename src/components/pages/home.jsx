@@ -1,30 +1,12 @@
 import React, { useState } from "react";
-import Chart from "../../dist/donut";
+import { Container, Col, Row } from "react-bootstrap";
 import "./pages.css";
 import BankAccount from "../../objects/bankAccount";
-import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
 import Transaction from "../../objects/transaction";
 import User from "../../objects/user";
-import SuggestionsBox from "../common/suggestions/suggestions"
-import AccountsSuggestor from "../../bot/suggestion generators/accounts-suggestions";
-import SpendingSuggestor from "../../bot/suggestion generators/spending-suggestions";
-import RetirementSuggestor from "../../bot/suggestion generators/retirement-suggestions";
-
-// Include the react-fusioncharts component
-import ReactFC from "react-fusioncharts";
-
-// Include the fusioncharts library
-import FusionCharts from "fusioncharts";
-
-// Include the chart type
-import Column2D from "fusioncharts/fusioncharts.charts";
-
-// Include the theme as fusion
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-
-// Adding the chart and theme as dependency to the core fusioncharts
-ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
+import SuggestionsBox from "../common/suggestions"
+import Chart from "./chart"
 
 const Home = () => {
 
@@ -32,60 +14,16 @@ const Home = () => {
   let spendingSugs = u.getSpendingSuggestions();
   let accountSugs = u.getAccountSuggestions();
   let retireSugs = u.getRetirementSuggestions();
-  var totalSugs = [];
-  console.log(totalSugs);
-  totalSugs.concat(spendingSugs, accountSugs, retireSugs);
-  // Preparing the chart data
-const chartData = [
-  {
-    label: "Wants",
-    value: `${u.wantsSpending}`
-  },
-  {
-    label: "Needs",
-    value: `${u.needsSpending}`
-  },
-  {
-    label: "Savings",
-    value: `${u.savingsSpending}`
-  }
-];
+  var totalSugs = [...spendingSugs, ...accountSugs, ...retireSugs];
+  
 
-// Create a JSON object to store the chart configurations
-const chartConfigs = {
-  type: "pie2d", // The chart type
-  width: "700", // Width of the chart
-  height: "400", // Height of the chart
-  dataFormat: "json", // Data type
-  dataSource: {
-    // Chart Configuration
-    chart: {
-      caption: "Monthly Spending Breakdown",    //Set the chart caption
-      numberSuffix: "K",
-      theme: "fusion" //Set the theme for your chart
-    },
-    // Chart Data - from step 2
-    data: chartData
-  }
-};
-
-  return (
-    <div className="background">
-      <div className="row">
-        <div className="col" id="preview-container-end">
-          Account Balances{" "}
-        </div>{" "}
-        <div className="col" id="preview-container-center">
-            <ReactFC {...chartConfigs} />
-        </div>{" "}
-        <div className="col" id="preview-container-end">
-          Suggestion{" "}
-            <SuggestionsBox suggestion={spendingSugs.join(" ")+ accountSugs.join(" ") + retireSugs.join(" ")}></SuggestionsBox>
-        </div>{" "}
-      </div>{" "}
-      <br />
-      <br />
-    </div>
+  return (<Container fluid>
+    <Row>
+      <Col>Account Balances</Col>
+      <Col><Chart wantsSpending={u.wantsSpending} needsSpending={u.needsSpending} savingsSpending={u.savingsSpending} /></Col>
+      <Col><SuggestionsBox suggestions={totalSugs}></SuggestionsBox></Col>
+    </Row>
+  </Container>
   );
 };
 
