@@ -12,7 +12,7 @@
 - Discussed how to display data to the user
 - Mikayla to look into data visualization
 - Matt to begin detailing how the bot will work and create documentation
-- Dylan to look into remotly hosting the bot
+- Dylan to look into remotely hosting the bot
 - Jack to research more healthy budgeting habits to include in the bot
 #### Meeting 3/24
 
@@ -88,4 +88,4 @@
 
 ###### Incomplete tasks - Planned on changing code syntax throughout project to conform to eslint warnings. Also, wanted to contribute with CSS styling.
 
-###### Process Reflection - Taking greater initiative in communicating about consistent code style and keep code up to date comes a long way. Sometimes I would see older javascript not conforming to es6: using var instead of const and let. Also, sometimes I would see React code that does not utilize the power of version 18.x. I should be more outspoken about these issues even though they may not be application breaking.  
+###### Process Reflection - Taking greater initiative in communicating about consistent code style and keep code up to date comes a long way. Sometimes, I would see older javascript not conforming to es6: using var instead of const and let. Also, sometimes I would see React code that does not utilize the power of version 18.x. I should be more outspoken about these issues even though they may not be application breaking.  
