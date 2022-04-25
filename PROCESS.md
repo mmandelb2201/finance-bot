@@ -1,5 +1,19 @@
 ## Documentation on story creation and assignment at EACH iteration (one option is to include screenshots of kanban board).
 
+### User Stories
+1. Someone who is looking for recommendations on how to improve their financial situation. So that they can live more comfortably and have money saved for emergencies and retirement.  
+Complexity: 8
+
+2. A user wants to understand their financial standings better. They want to have their data visualized, in order to see their situation in a different and informative light. 
+Complexity: 5
+
+3. Someone who wants to see how they spend money and have it be categorized by where it is spent. To see how they can change their habits to invest. 
+Complexity: 3
+
+4. Someone who wants to organize their finances. To be able to make big financial decisions easier and see what changes they need to make. 
+Complexity: 1
+
+---
 ## Any scrum meeting notes.
 ---
 #### Meeting 2/18
