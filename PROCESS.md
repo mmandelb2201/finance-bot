@@ -34,11 +34,11 @@
 
 #### Dylan
 
-###### Completed Tasks 
+###### Completed Tasks - Set up firebase project and integrate firebase into bot application. Use Firebase's Cloud Firestore to store user information. Create functions to wrap backend-as-a-service functionality to get objects that will be visualized as financial data.
 
-###### Incomplete tasks
+###### Incomplete tasks - Intended to fully integrate react-bootstrap and react-hook-form modules to leverage bootstrap defined components and simple, but effective form handling. Integration of libraries to make styling easier and more streamlined.
 
-###### Process Reflection
+###### Process Reflection - Reading documentation of the modules is important as certain solutions for problems had during development could be solved from using react-bootstrap components such as the Form component and its children. Using react-hook-form, would make form-handling processes such as registering fields and submission easier.
 
 
 ### Iteration 2: Apr 11 - Apr 24
@@ -70,8 +70,8 @@
 
 #### Dylan
 
-###### Completed Tasks 
+###### Completed Tasks - Fully integrate react-bootstrap and react-hook-form in sign up and login pages. Connect suggestions and other bot services with firebase.
 
-###### Incomplete tasks
+###### Incomplete tasks - Planned on changing code syntax throughout project to conform to eslint warnings. Also, wanted to contribute with CSS styling.
 
-###### Process Reflection
+###### Process Reflection - Taking greater initiative in communicating about consistent code style and keep code up to date comes a long way. Sometimes I would see older javascript not conforming to es6: using var instead of const and let. Also, sometimes I would see React code that does not utilize the power of version 18.x. I should be more outspoken about these issues even though they may not be application breaking.  
