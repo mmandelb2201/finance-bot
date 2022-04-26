@@ -2,7 +2,6 @@ class Transaction{
     amount = 0.0;
     title = "";
     description = "";
-    date = new Date();
 
     constructor(amount, title, description, date){
         this.amount = amount;

@@ -14,15 +14,6 @@
     border: 0.2vh solid lightblue;
 }
 
-.row {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    /*Optional*/
-    border-spacing: 10px;
-    /*Optional*/
-}
-
 .login-container {
     display: flex;
     flex-direction: column;
@@ -66,4 +57,14 @@
 .switch-page:hover {
     background-color: transparent;
     text-decoration: underline;
+}
+
+.column-header{
+    font-size: larger;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.account-status{
+    font-size: medium;
 }

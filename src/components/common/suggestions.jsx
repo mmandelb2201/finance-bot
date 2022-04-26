@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import './common.css';
 
 
@@ -8,7 +9,7 @@ const SuggestionsBox = (props) => {
     let [index, setIndex] = useState(0);
 
     let incrementIndex = () => {
-        if(index + 1 === props.suggestions.length){
+        if((index + 1) === props.suggestions.length){
             setIndex(0);
         }else{
             setIndex(index + 1);
@@ -16,8 +17,9 @@ const SuggestionsBox = (props) => {
     }
 
     return (<div className='suggestions-container'>
-                <button onClick={() => incrementIndex()}>Increment</button>
+                <h3 className="column-header">Suggestions</h3>
                 <p className='suggestions-paragraph'>{ props.suggestions[index] }</p>
+                <Button variant="dark" onClick={() => incrementIndex()}>Next</Button>
             </div>
     );
 }

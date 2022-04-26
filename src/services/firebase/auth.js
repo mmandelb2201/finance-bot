@@ -12,18 +12,9 @@ const userConverter = {
             t.date = Timestamp.fromDate(t.date);
             return t;
         };
-
         return {
-
-        
             monthyTransactions: user.monthyTransactions.map( mTransaction => {
                 return convertTransaction(mTransaction);
-            }),
-            monthyReoccuringTransactions: user.monthyReoccuringTransactions.map( rTransaction => {
-                return { 
-                    startDate: Timestamp.fromDate(rTransaction.startDate),
-                    period: rTransaction.peroid
-                };
             }),
             bankAccounts: user.bankAccounts.map(bnkAccount => {
                 let bnk = { ...bnkAccount };
@@ -38,7 +29,10 @@ const userConverter = {
                 });
             }),
             dOB: Timestamp.fromDate(user.dateOfBirth),
-            ...user     
+            name: user.name,
+            email: user.email,
+            retirementAge: user.retirementAge,
+            income: user.income   
         }
     },
     fromFirestore: (snapshot, options) => {
@@ -70,8 +64,6 @@ const userConverter = {
             )),
             data.monthyReoccuringTransactions.map(t => convertToTransaction(t)),
             data.retirementAge,
-            data.nChildren,
-            data.nChildrenCollege,
             data.dOB.toDate()
         )
     }
@@ -89,7 +81,9 @@ const getCurrentUser = () => {
                     
                     resolve(user);
                 } else {
-                    reject(new Error('User does not exist!'));
+                    if(!window.location.href.includes("login") && !window.location.href.includes("sign-up") && !window.location.href.includes("/")){
+                        window.location.href ="/login";
+                    }
                 }
                 
             } else {
@@ -99,7 +93,7 @@ const getCurrentUser = () => {
     });
 };
 
-const createUser = (name, email, password) => {
+const createUser = (name, email, password, dOB, income, retirement, expenses, bankAccounts, rBankAccounts) => {
     return new Promise((resolve, reject) =>{
         createUserWithEmailAndPassword (auth, email, password).then(async (userCredential) => {
             //Signed in
@@ -107,7 +101,16 @@ const createUser = (name, email, password) => {
             const uID = user.uid;
             //TODO: create new user in firestore with specific UID
             const userRef = doc(db, "users", uID).withConverter(userConverter);
-            await setDoc(userRef, new User(email, name, 0, [], [], [], [], 0, 0, 0, new Date()));
+            let u = new User(email, name, income, expenses, bankAccounts, rBankAccounts, [], retirement, dOB);
+            console.log(u.email);
+            console.log(u.bankAccounts);
+            console.log(u.retirementBankAccounts);
+            console.log(rBankAccounts);
+            console.log(u.monthyTransactions);
+            console.log(u.totalSpending);
+            console.log(u.retirementAge);
+            console.log(u.dOB.getTime());
+            await setDoc(userRef, u);
             resolve("");
         }).catch((error) => {
             //TODO: display error to user

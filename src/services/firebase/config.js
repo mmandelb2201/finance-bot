@@ -1,19 +1,29 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyAUiiaKRRS8FGc5OyucOg7A1-1q7dXkll8",
-    authDomain: "fir-proto-test-website-2.firebaseapp.com",
-    databaseURL: "https://fir-proto-test-website-2.firebaseio.com",
-    projectId: "fir-proto-test-website-2",
-    messagingSenderId: "997117701698",
-    appId: "1:997117701698:web:da3d2de95db9756762c7db",
+  apiKey: "AIzaSyDteusAFmimBb7yBkKLzbfj4XT5QEaIQBY",
+  authDomain: "finance-bot-cae6d.firebaseapp.com",
+  projectId: "finance-bot-cae6d",
+  storageBucket: "finance-bot-cae6d.appspot.com",
+  messagingSenderId: "196627868418",
+  appId: "1:196627868418:web:3f01eb979e23527b23301b",
+  measurementId: "G-HW0PK6R8Z8"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
+console.log("initialized");
+//Get Firebase services
 const db = getFirestore(app);
+const auth = getAuth(app);
+const storage = getStorage(app);
 
-export { auth, db };
+//export firebase services
+export { auth, storage, db };
