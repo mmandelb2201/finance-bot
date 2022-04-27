@@ -63,9 +63,10 @@ const SignUp = () => {
     if(parseFloat(kBalance) !== 0){
       rBankAccounts.push(new RetirementBankAccount(parseFloat(kBalance), (parseFloat(kInterest) * 0.01), [], "401K", 0, 0));
     }
+
     let dOB = new Date(Date.parse(dob));
     console.log(dOB);
-    console.log(dob)
+    console.log(dob);
     let u = new User(email, name, income, expenses, bankAccounts, rBankAccounts, [], retirement, dOB);
     createUser(name, email, password, dOB, parseFloat(income), parseFloat(retirement), expenses, bankAccounts, rBankAccounts).then((res)=>{
       // Account created successfully

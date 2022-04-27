@@ -102,14 +102,6 @@ const createUser = (name, email, password, dOB, income, retirement, expenses, ba
             //TODO: create new user in firestore with specific UID
             const userRef = doc(db, "users", uID).withConverter(userConverter);
             let u = new User(email, name, income, expenses, bankAccounts, rBankAccounts, [], retirement, dOB);
-            console.log(u.email);
-            console.log(u.bankAccounts);
-            console.log(u.retirementBankAccounts);
-            console.log(rBankAccounts);
-            console.log(u.monthyTransactions);
-            console.log(u.totalSpending);
-            console.log(u.retirementAge);
-            console.log(u.dOB.getTime());
             await setDoc(userRef, u);
             resolve("");
         }).catch((error) => {
