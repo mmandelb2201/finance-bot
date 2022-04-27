@@ -1,7 +1,8 @@
 import { Timestamp, doc, getDoc, setDoc } from "firebase/firestore";
 import BankAccount from "../../objects/bankAccount";
+import RetirementBankAccount from "../../objects/retirementBankAccount";
 import User from "../../objects/user";
-import { Transaction } from "firebase/firestore";
+import Transaction from "../../objects/transaction";
 import { auth, db } from "./config";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth"
 
@@ -12,23 +13,25 @@ const userConverter = {
             t.date = Timestamp.fromDate(t.date);
             return t;
         };
+        const convertBankAccount = (account) => {
+            let bnk = {...account};
+            bnk.transactionHistory = bnk.transactionHistory.map((tr) => {
+                convertTransaction(tr);
+            })
+            return bnk
+        }
         return {
-            monthyTransactions: user.monthyTransactions.map( mTransaction => {
+            monthyTransactions: user.monthyTransactions.map( (mTransaction) => {
                 return convertTransaction(mTransaction);
             }),
             bankAccounts: user.bankAccounts.map(bnkAccount => {
-                let bnk = { ...bnkAccount };
-                bnk.transactionHistory = bnk.transactionHistory.map( tr => {
-                    return convertTransaction(tr);
-                });
+                return convertBankAccount(bnkAccount);
             }),
-            retirementBankAccounts: user.retirementBankAccounts.map(rBnkAccount => {
-                let bnk = { ...rBnkAccount };
-                bnk.transactionHistory = bnk.transactionHistory.map( tr => {
-                    return convertTransaction(tr);
-                });
+            retirementBankAccounts: user.retirementBankAccounts.map( (rBnkAccount) => {
+                console.log(convertBankAccount(rBnkAccount));
+                return convertBankAccount(rBnkAccount);
             }),
-            dOB: Timestamp.fromDate(user.dateOfBirth),
+            dOB: Timestamp.fromDate(user.dOB),
             name: user.name,
             email: user.email,
             retirementAge: user.retirementAge,
@@ -37,32 +40,36 @@ const userConverter = {
     },
     fromFirestore: (snapshot, options) => {
         const data = snapshot.data(options);
+        
+        const convertToTransaction = (transaction) => {
+            let t = new Transaction(transaction.amount, transaction.title, transaction.description, transaction.date.toDate());
+            return t;
+        }
 
-        const convertToTransaction = (transaction) => new Transaction(
-            transaction.amount,
-            transaction.title,
-            transaction.description,
-            transaction.date.toDate()
+        const convertToBankAccount = (bnkAccount) => new BankAccount(
+            bnkAccount.balance,
+            bnkAccount.interest,
+            bnkAccount.transactionHistory.map( t => convertToTransaction(t)),
+            bnkAccount.type
+        )
+
+        const convertToRetirementBankAccount = (bnkAccount) => new RetirementBankAccount(
+            bnkAccount.balance,
+            bnkAccount.interest,
+            bnkAccount.transactionHistory.map( t => convertToTransaction(t)),
+            bnkAccount.type,
+            bnkAccount.monthlyContribution,
+            bnkAccount.employerMatchMax
         )
 
         return new User(
             data.email,
             data.name,
             data.income,
-            data.monthyTransactions.map(t => convertToTransaction(t)),
-            data.bankAccounts.map( bnk => new BankAccount(
-                data.balance, 
-                data.interest, 
-                data.transactionHistory.map( t => convertToTransaction(t)),
-                data.type
-            )),
-            data.retirementBankAccounts.map( bnk => new BankAccount(
-                data.balance, 
-                data.interest, 
-                data.transactionHistory.map( t => convertToTransaction(t)),
-                data.type
-            )),
-            data.monthyReoccuringTransactions.map(t => convertToTransaction(t)),
+            data.monthyTransactions.map((t) => convertToTransaction(t)),
+            data.bankAccounts.map( (bnk) => convertToBankAccount(bnk)),
+            data.retirementBankAccounts.map( (bnk) => convertToRetirementBankAccount(bnk)),
+            [],
             data.retirementAge,
             data.dOB.toDate()
         )
@@ -102,6 +109,7 @@ const createUser = (name, email, password, dOB, income, retirement, expenses, ba
             //TODO: create new user in firestore with specific UID
             const userRef = doc(db, "users", uID).withConverter(userConverter);
             let u = new User(email, name, income, expenses, bankAccounts, rBankAccounts, [], retirement, dOB);
+            console.log(u.dOB);
             await setDoc(userRef, u);
             resolve("");
         }).catch((error) => {

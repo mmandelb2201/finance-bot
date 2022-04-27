@@ -65,7 +65,5 @@ class AccountsSuggestor{
         }
         return total;
     }
-
-
 }
 export default AccountsSuggestor;
