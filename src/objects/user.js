@@ -7,23 +7,12 @@ import SpendingSuggestor from "../bot/suggestion generators/spending-suggestions
 import RetirementSuggestor from "../bot/suggestion generators/retirement-suggestions";
 
 class User {
-    name = "";
-    email = "";
-    income = 0;
-    monthyTransactions = [];
-    monthyReoccuringTransactions = [];
-    bankAccounts = [];
-    retirementBankAccounts = [];
     totalSpending = 0;
-    dateOfBirth = new Date();
-    nChildren = 0;
-    nChildrenCollege = 0;
-    retirementAge = 0;
     needsSpending = 0;
     wantsSpending = 0;
     savingsSpending = 0;
 
-    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts, monthlyReocTrans, retirementAge, nChildren, nChildrenCollege, dOB){
+    constructor(email, name, income, monthyTransactions, bankAccounts, retirementBankAccounts, monthlyReocTrans, retirementAge, dOB){
         this.email = email;
         this.name = name;
         this.income = income;
@@ -32,8 +21,6 @@ class User {
         this.monthyReoccuringTransactions = monthlyReocTrans;
         this.bankAccounts = bankAccounts;
         this.retirementAge = retirementAge;
-        this.nChildren = nChildren;
-        this.nChildrenCollege = nChildrenCollege;
         this.dOB = dOB;
         this.totalSpending = this.calculateMonthlyTotal();
         this.sortTransactions();
@@ -44,13 +31,11 @@ class User {
      * @returns {number} balance
      */
     calculateMonthlyTotal(){
-        var total = this.income;
-        for (let transaction in this.monthyTransactions){
-            total = total - transaction.amount;
+        let total = this.income;
+        for (let transaction of this.monthyTransactions){
+            total -= transaction.amount;
         }
-        /*for (var i = 0; i <= this.monthyReoccuringTransactions.length; i++) {
-            total = total - this.calculateReoccurMonthlyTotal(this.monthyReoccuringTransactions[i]);
-        }*/
+        
         return total;
     }
  
@@ -64,7 +49,7 @@ class User {
         if(reoccurTrans.period === 0){
 
             //Check date bought. If current day of month is past initial transaction day during the month. Apply transaction
-            const date = new Date();
+            const date = new Date(Date.now());
             if(date.getDay() >= reoccurTrans.date.getDay()){
                 return reoccurTrans.amount;
             }
@@ -81,10 +66,10 @@ class User {
                 return 0;
             }
         }else{
-            const sDate = reoccurTrans.date.getTime();
-            const date = new Date();
-            const firstDayOfMonth = this.getFirstDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
-            const lastDayOfMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth()).getTime();
+            const sDate = reoccurTrans.date;
+            const date = Date.now();
+            const firstDayOfMonth = this.getFirstDayOfMonth(date.getFullYear(), date.getMonth());
+            const lastDayOfMonth = this.getLastDayOfMonth(date.getFullYear(), date.getMonth());
             const periodInMillSec = reoccurTrans.period * 86400000; //need to convert period in days to milliseconds
             var currStart = sDate;
    
@@ -126,7 +111,8 @@ class User {
      * @returns {number} age
      */
     getAge(){
-        var month_diff = Date.now() - this.dateOfBirth.getTime();
+        var month_diff = Date.now() - this.dOB;
+        console.log(month_diff)
         var age_dt = new Date(month_diff);
         var year = age_dt.getUTCFullYear();
         return Math.abs(year - 1970);
@@ -178,13 +164,13 @@ class User {
      */
     hasAccount(type){
         if(type === "401K" || type === "Roth IRA" || type === "Traditional IRA"){
-            for(let account in this.retirementBankAccounts){
+            for(let account of this.retirementBankAccounts){
                 if(account.type === type){
                     return true;
                 }
             }
         }else{
-            for(let account in this.bankAccounts){
+            for(let account of this.bankAccounts){
                 if(account.type === type){
                     return true;
                 }
@@ -197,14 +183,12 @@ class User {
      * Runs through user transactions and sorts them into wants and needs
      */
      sortTransactions(){
-        for(let transaction in this.monthyTransactions){
-            switch(transaction.type){
+        for(let transaction of this.monthyTransactions){
+            switch(transaction.title){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":
-                    this.needsTransactions.push(transaction);
                     this.needsSpending += transaction.amount;
                     break;
                 case "Entertainment": case "Restaurant":
-                    this.wantsTransactions.push(transaction);
                     this.wantsSpending += transaction.amount;
                     break;
                 default:

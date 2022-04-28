@@ -2,8 +2,6 @@ import User from "../../objects/user";
  
 class RetirementSuggestor{
 
-    user = new User();
-
     constructor(user){
         this.user = user;
     }
@@ -19,14 +17,20 @@ class RetirementSuggestor{
         //amount of years until the user reaches retirement age
         let yearDiff = this.user.retirementAge - this.user.getAge();
         //amount the user should have saved by retirement going by the rule of 25. Not including inflation.
-        var retirementTotal = (this.user.income - this.user.calculateMonthlyTotal) * 12 * 25;
+        var retirementTotal = (this.user.income - this.user.calculateMonthlyTotal()) * 12 * 25;
+        console.log("retirement");
+        console.log(retirementTotal);
         //calcualte retirement total in future value
         var realRetirementTotal = this.caluclateFutueValue(retirementTotal, 0.025, yearDiff);
+        console.log(realRetirementTotal);
         //total amount the user will have in their account by the time they retire
         var savingsByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
+        console.log(savingsByRetirement);
         //Find how much the user will have if they continue saving as they are
         var sWithAWByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
+        console.log(sWithAWByRetirement);
         //check if user currently has enough saved to be retired safely
+        suggestions.push(`With your current saving habits, you will have ${formatter.format(sWithAWByRetirement[1])} saved for retirement`);
         if(savingsByRetirement[1] > realRetirementTotal){
             suggestions.push("Great job saving! Even without putting another dollar into your retirement accounts, you have enough saved to be retired for 25 years. But that does not mean you should stop saving!");
         }
@@ -47,7 +51,7 @@ class RetirementSuggestor{
                 //to simplify calculations, take average interest between Roth and traditional IRA
                 var avgInterest = 0;
                 var count = 0;
-                for(let account in this.user.retirementBankAccounts){
+                for(let account of this.user.retirementBankAccounts){
                     if(account.type == "Roth IRA" || account.type == "Traditional IRA"){
                         avgInterest += account.interest;
                         count += 1;
@@ -59,26 +63,26 @@ class RetirementSuggestor{
                 //check if user cannot save enough even with max contributions to both IRA's
                 if(annualDeposit > (maxIRACont * 2)){
                     if(hasRoth && hasTrad && has401K){
-                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. You should also be saving ${formatter.format(saving)} in your 401K per year`);
+                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. You should also be saving ${formatter.format(saving)} in your 401K per year.`);
                     }else if(hasRoth && hasTrad && !has401K){
-                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. Next, open up a 401K and save ${formatter.format(saving)} per year in that account`);
+                        suggestions.push(`To be able to retire safely, you should max out both your Traditional and Roth IRA. Next, open up a 401K and save ${formatter.format(saving)} per year in that account.`);
                     }else{
-                        suggestions.push(`To be able to retire safely, you should be maxing out both a Traditional and Roth IRA. Next open up a 401K and save ${formatter.format(saving)} per year in that account`);
+                        suggestions.push(`To be able to retire safely, you should be maxing out both a Traditional and Roth IRA. Next open up a 401K and save ${formatter.format(saving)} per year in that account.`);
                     }
                 }else if(annualDeposit > maxIRACont){
                     //To save enough, the user needs to open a second IRA
                     if(hasRoth && !hasTrad){
-                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Traditional IRA as well. Max out your Roth IRA and save at least ${formatter.format(saving)} per year in the Traditional IRA`);
+                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Traditional IRA as well. Max out your Roth IRA and save at least ${formatter.format(saving)} per year in the Traditional IRA.`);
                     }else if(!hasRoth && hasTrad){
-                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Roth IRA as well. Max out your Traditional IRA and save at least ${formatter.format(saving)} per year in the Roth IRA`);
+                        suggestions.push(`To be able to retire safely, you need to save more than your max contribution. Consider opening a Roth IRA as well. Max out your Traditional IRA and save at least ${formatter.format(saving)} per year in the Roth IRA.`);
                     }else if(hasRoth && hasTrad){
                         suggestions.push(`To be able to have enough saved for retirement, you should max out the contribution in one of your IRA accounts. In the other one, you should be saving ${formatter.format(saving)} per year.`);
                     }else{
-                        suggestions.push(`To have enough saved for retirement, you should open up both a Traditional and Roth IRA. You should max ut the contribution in one of your IRA accounts. In the other one, you should be saving ${formatter.format(saving)} per years`);
+                        suggestions.push(`To have enough saved for retirement, you should open up both a Traditional and Roth IRA. You should max ut the contribution in one of your IRA accounts. In the other one, you should be saving ${formatter.format(saving)} per years.`);
                     }
                 }else{
                     if(hasRoth || hasTrad){
-                        suggestions.push(`To be able to retire safely, put in ${formatter.format(annualDeposit)} per year to your IRA account`);
+                        suggestions.push(`To be able to retire safely, put in ${formatter.format(annualDeposit)} per year to your IRA account.`);
                     }else{
                         suggestions.push(`To be able to retire safely, open up a Traditional or Roth IRA and save ${formatter.format(annualDeposit)} per year in that account.`)
                     }
@@ -94,9 +98,9 @@ class RetirementSuggestor{
                     suggestions.push(`To be able to retire safely, you should have ${amtAccounts} 401K accounts. Max out ${amtAccounts - 1} of them and save ${excess} in the last one.`);
                 }else{
                     if(has401K){
-                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into your 401K`);
+                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into your 401K.`);
                     }else{
-                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into a 401K`);
+                        suggestions.push(`To be able to retire safely, you should be investing ${formatter.format(annualDeposit)} into a 401K.`);
 
                     }
                 }
@@ -115,7 +119,7 @@ class RetirementSuggestor{
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
         //run through the user's accounts and save the one's that are retirement accounts 
-        for(let account in this.user.retirementBankAccounts){
+        for(let account of this.user.retirementBankAccounts){
             futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.calculateFutureValueWithMonthy(account, yearDiff);
         }
         //future account balance of retirement accounts including the effect of inflation
@@ -132,7 +136,7 @@ class RetirementSuggestor{
         let yearDiff = retirement_age - this.user.getAge();
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
-        for(let account in this.user.retirementBankAccounts){
+        for(let account of this.user.retirementBankAccounts){
             futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.caluclateFutueValue(account.balance, account.interest, yearDiff);
         }
         //future account balance of retirement accounts including the effect of inflation

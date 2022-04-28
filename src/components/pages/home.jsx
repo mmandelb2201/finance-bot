@@ -1,91 +1,53 @@
-import React, { useState } from "react";
-import Chart from "../../dist/donut";
+import React, { useState, useEffect } from "react";
+import { Container, Col, Row } from "react-bootstrap";
 import "./pages.css";
 import BankAccount from "../../objects/bankAccount";
-import ReoccuringTransaction from "../../objects/reoccuringTransaction";
 import RetirementBankAccount from "../../objects/retirementBankAccount";
 import Transaction from "../../objects/transaction";
 import User from "../../objects/user";
-
-// Include the react-fusioncharts component
-import ReactFC from "react-fusioncharts";
-
-// Include the fusioncharts library
-import FusionCharts from "fusioncharts";
-
-// Include the chart type
-import Column2D from "fusioncharts/fusioncharts.charts";
-
-// Include the theme as fusion
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-
-// Adding the chart and theme as dependency to the core fusioncharts
-ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
-
-let u = new User("f", "", 1000000,[new Transaction(100, "Rent", "Rent", new Date())], [new BankAccount(100, 0.3, [new Transaction(100, "Groceries", "Groceries", new Date())], "Checking")], [new RetirementBankAccount(100, 0.2, [new Transaction(100, "Groceries", "Groceries", new Date())], "401K", 50, 50)],  [], 60, 2, 3, new Date());
-
+import SuggestionsBox from "../common/suggestions"
+import Chart from "./chart"
+import Accounts from "./accounts"
+import { getCurrentUser } from "../../services/firebase/auth";
 
 const Home = () => {
 
-  console.log(u.getAccountSuggestions());
-  console.log(u.getRetirementSuggestions());
-  console.log(u.getSpendingSuggestions());
+  const [ suggestions, setSuggestions ] = useState([]);
+  const [ accounts, setAccounts ] = useState([]);
+  const [wantsSpending, setWantsSpending] = useState(0);
+  const [needsSpending, setNeedsSpending] = useState(0);
+  const [savingsSpending, setSavingsSpending] = useState(0);
 
-  // Preparing the chart data
-const chartData = [
-  {
-    label: "Wants",
-    value: "290"
-  },
-  {
-    label: "Needs",
-    value: "260"
-  },
-  {
-    label: "Savings",
-    value: "250"
-  }
-];
+  useEffect(() => {
+    const getUserInfo = async () => {
+      let u = await getCurrentUser();
+      if(u !== undefined && u !== null){
+        let spendingSugs = u.getSpendingSuggestions();
+        let accountSugs = u.getAccountSuggestions();
+        let retireSugs = u.getRetirementSuggestions();
+      
+        var totalSugs = [...spendingSugs, ...accountSugs, ...retireSugs];
+    
+        setSuggestions(totalSugs);
+        setWantsSpending(u.wantsSpending);
+        setNeedsSpending(u.needsSpending);
+        setSavingsSpending(u.savingsSpending);
+        setAccounts([...u.bankAccounts, ...u.retirementBankAccounts])
+      }else{
+        window.location.href = "/login";
+      }
+    }
+    return getUserInfo;
+  }, [])
 
-// Create a JSON object to store the chart configurations
-const chartConfigs = {
-  type: "pie2d", // The chart type
-  width: "700", // Width of the chart
-  height: "400", // Height of the chart
-  dataFormat: "json", // Data type
-  dataSource: {
-    // Chart Configuration
-    chart: {
-      caption: "Countries With Most Oil Reserves [2017-18]",    //Set the chart caption
-      subCaption: "In MMbbl = One Million barrels",             //Set the chart subcaption
-      xAxisName: "Country",           //Set the x-axis name
-      yAxisName: "Reserves (MMbbl)",  //Set the y-axis name
-      numberSuffix: "K",
-      theme: "fusion"                 //Set the theme for your chart
-    },
-    // Chart Data - from step 2
-    data: chartData
-  }
-};
 
-  return (
-    <div className="background">
-      <div className="row">
-        <div className="column" id="preview-container-end">
-          <br />
-          Account Balances{" "}
-        </div>{" "}
-        <div className="column" id="preview-container-center">
-            <ReactFC {...chartConfigs} />
-        </div>{" "}
-        <div className="column" id="preview-container-end">
-          <br />
-          Suggestion{" "}
-        </div>{" "}
-      </div>{" "}
-      <br />
-      <br />
-    </div>
+  return (<Container fluid>
+    <Row>
+      <Col><Accounts accounts={accounts}/></Col>
+      <Col><Chart wantsSpending={wantsSpending} needsSpending={needsSpending} savingsSpending={savingsSpending} /></Col>
+      <Col><SuggestionsBox suggestions={suggestions}></SuggestionsBox></Col>
+    </Row>
+  </Container>
   );
 };
 

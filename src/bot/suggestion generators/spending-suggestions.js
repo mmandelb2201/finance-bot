@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import User from "../../objects/user";
  
 class SpendingSuggestor{
-    user = new User();
     totalSpending = 0;
     needs = 0; //total monthly speding for needs
     wants = 0; //total monthy spending for wants
@@ -39,7 +38,7 @@ class SpendingSuggestor{
             var restaurantSpending = 0;
             var entertainmentSpending = 0;
             var otherSpending = 0;
-            for(let transaction in this.wantsTransactions){
+            for(let transaction of this.wantsTransactions){
                 switch(transaction.type){
                     case "Restaurant":
                         restaurantSpending += transaction.amount;
@@ -52,7 +51,7 @@ class SpendingSuggestor{
                         break;
                 }
             }
-            for(let transaction in this.wantsReocurringTransactions){
+            for(let transaction of this.wantsReocurringTransactions){
                 let amt = this.user.calculateReoccurMonthlyTotal(transaction);
                 switch(transaction.type){
                     case "Restaurant":
@@ -68,7 +67,7 @@ class SpendingSuggestor{
             }
             //Analyze how wants have been split up
             if(restaurantSpending > nonSpendingPercentage){
-                suggestions.push("You're spending more at restaurants and take-out than saving. Consider spending less at restaraunts with meal kits, or cooking for yourself");
+                suggestions.push("You're spending more at restaurants and take-out than saving. Consider spending less at restaraunts with meal kits, or cooking for yourself.");
                 suggestions.push("Watch the small stuff. If you like passing time in coffee shops, add up what you spend each month. The sum of all those $4 lattes might shock you. So drink water sometimes, or work at home and make your own coffee.");
             }
             if(entertainmentSpending > nonSpendingPercentage){
@@ -92,7 +91,7 @@ class SpendingSuggestor{
                 }
             }
             if(debtPercentage > 0.3){
-                suggestions.push("You're monthly debt payments are high. Try not to take on any more debt until your monthly payments are lower");
+                suggestions.push("You're monthly debt payments are high. Try not to take on any more debt until your monthly payments are lower.");
                 suggestions.push("Try using the snowball method for paying off debt. Make the minimum payments to all your debts, and pay as much as possible on your smallest debt.");
             }
         }else if(nonSpendingPercentage > 0.2 && (nonSpendingPercentage > (wantsPercentage + needsPercentage))){
@@ -105,7 +104,7 @@ class SpendingSuggestor{
      * Runs through user transactions and sorts them into wants and needs
      */
     sortTransactions(){
-        for(let transaction in this.user.monthyTransactions){
+        for(let transaction of this.user.monthyTransactions){
             switch(transaction.type){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":
                     this.needsTransactions.push(transaction);
@@ -120,7 +119,7 @@ class SpendingSuggestor{
                     break;
             }
         }
-        for(let transaction in this.user.monthyReoccuringTransactions){
+        for(let transaction of this.user.monthyReoccuringTransactions){
             let amt = this.user.calculateReoccurMonthlyTotal(transaction);
             switch(transaction.type){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":

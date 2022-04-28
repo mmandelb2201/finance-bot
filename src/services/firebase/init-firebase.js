@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
@@ -9,19 +8,18 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDZBH_OcgNr67oEHYxe7Hv7m5CBFgD9Dgw",
-    authDomain: "waddle-35ec3.firebaseapp.com",
-    projectId: "waddle-35ec3",
-    storageBucket: "waddle-35ec3.appspot.com",
-    messagingSenderId: "591902467339",
-    appId: "1:591902467339:web:497f97eb24daf212afae0e",
-    measurementId: "G-78Q9Y82XJF",
+  apiKey: "AIzaSyDteusAFmimBb7yBkKLzbfj4XT5QEaIQBY",
+  authDomain: "finance-bot-cae6d.firebaseapp.com",
+  projectId: "finance-bot-cae6d",
+  storageBucket: "finance-bot-cae6d.appspot.com",
+  messagingSenderId: "196627868418",
+  appId: "1:196627868418:web:3f01eb979e23527b23301b",
+  measurementId: "G-HW0PK6R8Z8"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
+console.log("initialized");
 //Get Firebase services
 const db = getFirestore(app);
 const auth = getAuth(app);

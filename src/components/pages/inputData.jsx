@@ -173,34 +173,14 @@ function InputData() {
             ></input>
           </div>
         </div>
+
+        <div class="row" id="submit-button">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon1">Submit</button>
+        </div>
       </form>
+      <br></br>
     </div>
   );
 }
-
-/*
-        <div class="row">
-          <div class="col">
-            <div>
-              <select id="Expenses">
-                <option selected>Type of Expense</option>
-                <option value="1">Transportion</option>
-                <option value="2">Housing</option>
-                <option value="3">Food</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div>
-              <input type="percent" class="form-control" id="Expenses" placeholder="Interest"></input>
-            </div>
-          </div>
-          <div class="col">
-            <div>
-              <input type="number" class="form-control" id="Expenses" placeholder="Balance e.g. 50,000"></input>
-            </div>
-          </div>
-        </div>
-*/
 
 export default InputData;
