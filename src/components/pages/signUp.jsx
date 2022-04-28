@@ -55,7 +55,7 @@ const SignUp = () => {
     //retirement bank accounts
     let rBankAccounts = [];
     if(parseFloat(rIRABalance) !== 0){
-      rBankAccounts.push(new RetirementBankAccount(parseFloat(rIRABalance), (parseFloat(rIRABalance) * 0.01), [], "Roth IRA", 0, 0));
+      rBankAccounts.push(new RetirementBankAccount(parseFloat(rIRABalance), (parseFloat(rIRAInterest) * 0.01), [], "Roth IRA", 0, 0));
     }
     if(parseFloat(tIRABalance) !== 0){
       rBankAccounts.push(new RetirementBankAccount(parseFloat(tIRABalance), (parseFloat(tIRAInterest) * 0.01), [], "Traditional IRA", 0, 0));

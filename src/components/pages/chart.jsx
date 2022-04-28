@@ -44,7 +44,9 @@ const Chart = (props) => {
       // Chart Configuration
       chart: {
         caption: "Monthly Spending Breakdown",    //Set the chart caption
-        numberSuffix: "K",
+        numberPrefix: "$",
+        numberScaleValue: "1000,1000,1000",
+        numberScaleUnit: "K,M,B",
         theme: "fusion" //Set the theme for your chart
       },
       // Chart Data - from step 2

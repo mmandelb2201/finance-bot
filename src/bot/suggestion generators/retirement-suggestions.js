@@ -17,14 +17,20 @@ class RetirementSuggestor{
         //amount of years until the user reaches retirement age
         let yearDiff = this.user.retirementAge - this.user.getAge();
         //amount the user should have saved by retirement going by the rule of 25. Not including inflation.
-        var retirementTotal = (this.user.income - this.user.calculateMonthlyTotal) * 12 * 25;
+        var retirementTotal = (this.user.income - this.user.calculateMonthlyTotal()) * 12 * 25;
+        console.log("retirement");
+        console.log(retirementTotal);
         //calcualte retirement total in future value
         var realRetirementTotal = this.caluclateFutueValue(retirementTotal, 0.025, yearDiff);
+        console.log(realRetirementTotal);
         //total amount the user will have in their account by the time they retire
         var savingsByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
+        console.log(savingsByRetirement);
         //Find how much the user will have if they continue saving as they are
         var sWithAWByRetirement = this.calculateCurrentSavingsByRetirement(this.user.retirementAge);
+        console.log(sWithAWByRetirement);
         //check if user currently has enough saved to be retired safely
+        suggestions.push(`With your current saving habits, you will have ${formatter.format(sWithAWByRetirement[1])} saved for retirement`);
         if(savingsByRetirement[1] > realRetirementTotal){
             suggestions.push("Great job saving! Even without putting another dollar into your retirement accounts, you have enough saved to be retired for 25 years. But that does not mean you should stop saving!");
         }
@@ -113,7 +119,7 @@ class RetirementSuggestor{
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
         //run through the user's accounts and save the one's that are retirement accounts 
-        for(let account in this.user.retirementBankAccounts){
+        for(let account of this.user.retirementBankAccounts){
             futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.calculateFutureValueWithMonthy(account, yearDiff);
         }
         //future account balance of retirement accounts including the effect of inflation
@@ -130,7 +136,7 @@ class RetirementSuggestor{
         let yearDiff = retirement_age - this.user.getAge();
         //future account balance of retirement accounts not including inflation
         var futureTotalRetirementAccountBalances = 0;
-        for(let account in this.user.retirementBankAccounts){
+        for(let account of this.user.retirementBankAccounts){
             futureTotalRetirementAccountBalances = futureTotalRetirementAccountBalances + this.caluclateFutueValue(account.balance, account.interest, yearDiff);
         }
         //future account balance of retirement accounts including the effect of inflation
