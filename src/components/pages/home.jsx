@@ -21,20 +21,24 @@ const Home = () => {
   useEffect(() => {
     const getUserInfo = async () => {
       let u = await getCurrentUser();
-      let spendingSugs = u.getSpendingSuggestions();
-      let accountSugs = u.getAccountSuggestions();
-      let retireSugs = u.getRetirementSuggestions();
+      if(u !== undefined && u !== null){
+        let spendingSugs = u.getSpendingSuggestions();
+        let accountSugs = u.getAccountSuggestions();
+        let retireSugs = u.getRetirementSuggestions();
+      
+        var totalSugs = [...spendingSugs, ...accountSugs, ...retireSugs];
     
-      var totalSugs = [...spendingSugs, ...accountSugs, ...retireSugs];
-  
-      setSuggestions(totalSugs);
-      setWantsSpending(u.wantsSpending);
-      setNeedsSpending(u.needsSpending);
-      setSavingsSpending(u.savingsSpending);
-      setAccounts([...u.bankAccounts, ...u.retirementBankAccounts])
+        setSuggestions(totalSugs);
+        setWantsSpending(u.wantsSpending);
+        setNeedsSpending(u.needsSpending);
+        setSavingsSpending(u.savingsSpending);
+        setAccounts([...u.bankAccounts, ...u.retirementBankAccounts])
+      }else{
+        window.location.href = "/login";
+      }
     }
     return getUserInfo;
-  })
+  }, [])
 
 
   return (<Container fluid>

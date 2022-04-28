@@ -184,7 +184,6 @@ class User {
      */
      sortTransactions(){
         for(let transaction of this.monthyTransactions){
-            console.log(transaction.title);
             switch(transaction.title){
                 case "Rent": case "Groceries": case "Utilities": case "Clothing":
                     this.needsSpending += transaction.amount;

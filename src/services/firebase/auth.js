@@ -133,4 +133,15 @@ function signIn(email, password){
     })
 }
 
-export { getCurrentUser, createUser, signIn};
+const signOutUser = () => {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        console.log("sign out successful");
+        window.location.href = "/login";
+    }).catch((error) => {
+        // An error happened.
+        console.log(error.message);
+    });
+}
+
+export { getCurrentUser, createUser, signIn, signOutUser };
