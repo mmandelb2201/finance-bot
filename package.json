@@ -21,45 +21,38 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "set PORT=3000 && react-scripts start",
-        "build": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby build",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "description": "Mikayla Mount's branch (@verdetea22 on Github)",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mmandelb2201/finance-bot.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mmandelb2201/finance-bot/issues"
     }
-}
-
-},
-"eslintConfig": {
-    "extends": [
-        "react-app",
-        "react-app/jest"
-    ]
-},
-"browserslist": {
-    "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all"
-    ],
-    "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-    ]
-},
-"description": "Mikayla Mount's branch (@verdetea22 on Github)",
-"main": "index.js",
-"repository": {
-    "type": "git",
-    "url": "git+https://github.com/mmandelb2201/finance-bot.git"
-},
-"author": "",
-"license": "ISC",
-"bugs": {
-    "url": "https://github.com/mmandelb2201/finance-bot/issues"
-},
-"homepage": "https://github.com/mmandelb2201/finance-bot#readme",
-"devDependencies": {}
 }
