@@ -1,44 +1,14 @@
-# financebot
-#### https://finance-bot-cae6d.web.app/
-
-## What is financebot?
-#### financebot is a webiste where users can get recommendations on how to improve their financial situation. Users put in basic information about themselves, then the bot gives them curated suggestions on what they can do better.
-
-## How was financbot made?
-#### financebot is made using React for front-end components and routing. React-Bootstrap is being used as our CSS framework. All user data and authentication is being done using google firebase. The website is also being hosted on google firebase servers. The bot and all components were created in Javascript.
-
-## How to run financebot locally?
-1. Clone the repository into a local directory.
-2. cd into the directory.
-3. Run npm install --legacy-peer-deps.
-4. Run npm start
-5. The webiste is now hosted locally at http://localhost:3000/
-##### Note: If you're currently on node version 17 or higher, you must change the start script in package.json to "start": "react-scripts --openssl-legacy-provider start"
-
-## Created By
-1. Matthew Mandelbaum
-2. Dylan James
-3. Mikayla Mount
-4. Jack Corridon
-
-MIT License
-
-Copyright (c) 2022
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## Reflection
+#### Design
+1. The class diagram was the most helpful. A lot of the bot was based off of classes and their methods. Having a diagram helped the team be able to completly understand how the classes would be designed and imteract with each other.
+2. The most difficult was coming up with the scope of the project. A finance bot could take a bunch of different directions. From being more cryptocurrency based, to more stock based, to more budget based. We should have defined a clearer scope sooner. Our scope was too big origionally and we did not get to a lot of what we first wanted to do.
+3. The class diagram worked really well here and I would definitely use it again.
+#### Implementation
+1. Staying close to the diagrams we made in the design milestone was the most helpful. It helped the entire team stay consistent with our code.
+2. The most difficult was mostly testing. I should have began testing the bot much sooner. A lot of the bugs near the end of the project could have been avoided by testing earlier. Unit tests were the best way to test this project.
+3. Unit tests were very helpful here and I will definitely use them again.
+#### Process
+1. The kanban board was helpful with splitting up tasks evenly and keeping track of everyone's progress.
+2. The most difficult was creating issues that weren't vague. If someone made an issue that wasn't specific, the person fixing the issue sometimes misunderstood what the project needed.
+3. I will use the Kanban board again.
+#### Overall
