@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./components/pages/home";
 import SignUp from "./components/pages/signUp";
+import Login from "./components/pages/login";
 import InputData from "./components/pages/inputData";
 import Settings from "./components/pages/settings";
 import ViewAccount from "./components/pages/viewAccount";
@@ -17,15 +18,16 @@ function App() {
     <div className="App">
       <FirebaseAuthProvider>
         <Header />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/input-data" element={<InputData />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/view-account" element={<ViewAccount />} />
-          </Routes>
-        </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />{" "}
+          <Route path="/sign-up" element={<SignUp />} />{" "}
+          <Route path="/login" element={<Login />} />{" "}
+          <Route path="/input-data" element={<InputData />} />{" "}
+          <Route path="/settings" element={<Settings />} />{" "}
+          <Route path="/view-account" element={<ViewAccount />} />{" "}
+        </Routes>{" "}
+      </Router>{" "}
       </FirebaseAuthProvider>
     </div>
   );

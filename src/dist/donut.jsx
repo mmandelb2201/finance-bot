@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import ReactFC from "react-fusioncharts";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 
 import FusionCharts from "fusioncharts/core";
 import Doughnut2D from "fusioncharts/viz/doughnut2d";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 //Adding the chart as dependency to the core fusioncharts
+ReactFC.fcRoot(FusionCharts, Doughnut2D, FusionTheme);
 
 const chartConfigs = {
   type: "doughnut2d",
@@ -69,6 +70,6 @@ class Chart extends Component {
   }
 }
 
-ReactDOM.render(<Chart />, document.getElementById("root"));
+//ReactDOM.render(<Chart />, document.getElementById("root"));
 
 export default Chart;
