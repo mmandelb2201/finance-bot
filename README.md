@@ -12,7 +12,7 @@
 2. cd into the directory.
 3. Run npm install --legacy-peer-deps.
 4. Run npm start
-5. The webiste is now hosted locally at http://localhost:3000/
+5. The website is now hosted locally at http://localhost:3000/
 ##### Note: If you're currently on node version 17 or higher, you must change the start script in package.json to "start": "react-scripts --openssl-legacy-provider start"
 
 ## Created By
