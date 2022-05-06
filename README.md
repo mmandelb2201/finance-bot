@@ -2,7 +2,7 @@
 #### https://finance-bot-cae6d.web.app/
 
 ## What is financebot?
-#### financebot is a webiste where users can get recommendations on how to improve their financial situation. Users put in basic information about themselves, then the bot gives them curated suggestions on what they can do better.
+#### financebot is a website where users can get recommendations on how to improve their financial situation. Users put in basic information about themselves, then the bot gives them curated suggestions on what they can do better.
 
 ## How was financebot made?
 #### financebot is made using React for front-end components and routing. React-Bootstrap is being used as our CSS framework. All user data and authentication is being done using google firebase. The website is also being hosted on google firebase servers. The bot and all components were created in Javascript.
